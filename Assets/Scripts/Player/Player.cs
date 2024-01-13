@@ -25,6 +25,9 @@ public class Player : Entity
     protected PMoveState _moveState;
     protected PDashState _dashState;
     protected PMainAttack _mainAttackState;
+    protected PListening _listenState;
+
+    protected Speaker speakerClose;
 
     private void Awake()
     {
@@ -79,6 +82,7 @@ public class Player : Entity
         _moveState = new PMoveState(this);
         _dashState = new PDashState(this);
         _mainAttackState = new PMainAttack(this);
+        _listenState = new PListening(this);
 
         stateMachine.ChangeState(_idleState);
 
@@ -109,7 +113,26 @@ public class Player : Entity
     }
     public void HandleMainAttack()
     {
-        stateMachine.ChangeState(_mainAttackState);
+        if (speakerClose)
+        {
+            speakerClose.StartSpeak();
+        }
+        else
+        {
+            stateMachine.ChangeState(_mainAttackState);
+        }
     }
+
+    public void StartListening()
+    {
+        stateMachine.ChangeState(_listenState);
+    }
+
+    public void StopListening()
+    {
+        HandleIdle();
+    }
+
+    public Speaker SpeakerClose { get { return speakerClose; } set { speakerClose = value; } }
 
 }
