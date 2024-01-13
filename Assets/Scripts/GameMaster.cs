@@ -18,16 +18,11 @@ public class GameMaster : MonoBehaviour
 
     public Player SpawnPlayer(Vector3 pos)
     {
-        if (player) Destroy(player);
+        if (player) Destroy(player.gameObject);
         player = Instantiate(playerPrefab);
         player.transform.position = pos;
         return player;
     }
 
     public Player Player { get { return player; } }
-
-    public int GetPlayerMaxHealth()
-    {
-        return 10;
-    }
 }

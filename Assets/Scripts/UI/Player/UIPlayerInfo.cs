@@ -27,9 +27,9 @@ public class UIPlayerInfo : MonoBehaviour
         {
             Destroy(hearts.gameObject);
         }
-        int maxHealth = GameMaster.Instance.GetPlayerMaxHealth();
+        float maxHealth = GameMaster.Instance.Player.health.maxHealth;
         float currentHealth = GameMaster.Instance.Player.health.CurrentHealth;
-        for ( int i = 1; i <= Mathf.Ceil(maxHealth / healthPerHeart); i++ )
+        for ( int i = 0; i < Mathf.Ceil(maxHealth / healthPerHeart); i++ )
         {
             if (healthPerHeart * i >= currentHealth)
                 Instantiate(heartPrefab, heartsContainer).Load(healthPerHeart);
@@ -43,7 +43,7 @@ public class UIPlayerInfo : MonoBehaviour
         Player player = GameMaster.Instance.Player;
         if (player != null)
         {
-            int maxHealth = GameMaster.Instance.GetPlayerMaxHealth();
+            float maxHealth = GameMaster.Instance.Player.health.maxHealth;
             float currentHealth = GameMaster.Instance.Player.health.CurrentHealth;
             for (int i = 0; i < Mathf.Ceil(maxHealth / healthPerHeart); i++)
             {

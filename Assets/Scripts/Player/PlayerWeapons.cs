@@ -7,6 +7,7 @@ public class PlayerWeapons : MonoBehaviour
     public float mainWeapontSpawnRange = 1f;
     public Projectile mainWeaponAttack;
 
+    public event OnProjectileSpawn onPrimaryWeaponSpawn;
 
     public void SpawnMainWeaponAttack(Player player, Vector2 direction)
     {
@@ -15,5 +16,11 @@ public class PlayerWeapons : MonoBehaviour
         mainWeapon.transform.position = (Vector2)player.transform.position + spawnPoint.normalized * mainWeapontSpawnRange;
         float rotation = (Mathf.Atan2(spawnPoint.y, spawnPoint.x) * Mathf.Rad2Deg);
         mainWeapon.transform.Rotate(0,0, rotation);
+        onPrimaryWeaponSpawn?.Invoke(mainWeapon);
+    }
+
+    private void OnDestroy()
+    {
+        onPrimaryWeaponSpawn = null;
     }
 }

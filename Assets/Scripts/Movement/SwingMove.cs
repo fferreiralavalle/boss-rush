@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwingMove : MonoBehaviour
 {
-    public float duration = 0.25f;
+    public Projectile projectile;
     public float swingAmplitudeDegrees = 90f;
     public bool destroyAfter = true;
 
@@ -14,7 +14,7 @@ public class SwingMove : MonoBehaviour
     {
         targetDegrees = transform.rotation.eulerAngles.z + swingAmplitudeDegrees / 2f;
         transform.Rotate(0, 0, -swingAmplitudeDegrees / 2);
-        transform.LeanRotateZ(targetDegrees, duration).setOnComplete(HandleDestroy);
+        transform.LeanRotateZ(targetDegrees, projectile.projectileData.duration).setOnComplete(HandleDestroy);
     }
 
     public void HandleDestroy()

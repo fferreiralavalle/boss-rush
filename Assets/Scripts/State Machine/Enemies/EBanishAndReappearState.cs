@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class EBanishAndReappearState : EnemyState
 {
@@ -13,6 +13,8 @@ public class EBanishAndReappearState : EnemyState
 
     protected GameObject warningInstance;
     protected bool dontReadjustPosition = false;
+
+    public Action onLand;
 
     public EBanishAndReappearState(Enemy enemy, Vector3 target, Vector3 distanceFromTarget) : base(enemy)
     {
@@ -59,6 +61,7 @@ public class EBanishAndReappearState : EnemyState
             {
                 Projectile projectile = Object.Instantiate(onAppearPrefab).Initiate(_enemy);
                 projectile.transform.position = target;
+                onLand?.Invoke();
                 HandleFinish();
             }
         }

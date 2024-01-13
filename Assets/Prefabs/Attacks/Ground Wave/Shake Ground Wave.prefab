@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileData: {fileID: 11400000, guid: 423e471e895b7eb48bdef405c69f383e, type: 2}
   _targetTypes: 01000000
+  damageMultiplier: 1
   maxRadius: 7
-  speed: 3
-  startWidth: 1.5
+  speed: 5
+  startWidth: 2

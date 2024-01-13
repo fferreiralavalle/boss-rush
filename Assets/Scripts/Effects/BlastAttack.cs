@@ -63,7 +63,7 @@ public class BlastAttack : Projectile
                 Health health = entity.health;
                 if (health && _targetTypes.Contains(health.healthType))
                 {
-                    health.Damage(DamageSummary);
+                    health.Damage(DamageSummaryMod);
                 }
             }
         }

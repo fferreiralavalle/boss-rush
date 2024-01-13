@@ -4,8 +4,11 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public delegate void OnProjectileSpawn(Projectile projectile);
+
 public class Player : Entity
 {
+    public float baseHealth = 10f;
     public PlayerWeapons playerWeapons;
     public PlayerInputs playerInput;
 
@@ -40,7 +43,15 @@ public class Player : Entity
         health.onDamage += (DamageSummary damage, float curr) => UIPlayerInfo.Instance.UpdateHealth();
         health.onDamage += ActivateGloryTime;
 
+        PowerManager.Instance.onPowerObtain += HandlePowerChange;
+
         InitializeStates();
+    }
+
+    public void HandlePowerChange(Power change)
+    {
+        health.maxHealth = baseHealth - PowerManager.Instance.GetPowersTotalHealthCost();
+        UIPlayerInfo.Instance.UpdateMaxHearts();
     }
 
     private void OnDisable()

@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [Serializable]
-public class DamageSummary
+public class DamageSummary: ICloneable
 {
     public float damage = 0;
     public DamageType damageType;
-    public Vector2 force = Vector2.zero;
+    public Vector3 force = Vector3.zero;
 
     public DamageSummary(float damage, DamageType damageType = DamageType.Normal)
     {
@@ -15,5 +15,8 @@ public class DamageSummary
         this.damageType = damageType;
     }
 
-
+    public object Clone()
+    {
+        return MemberwiseClone();
+    }
 }

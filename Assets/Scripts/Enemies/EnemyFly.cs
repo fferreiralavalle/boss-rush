@@ -15,13 +15,15 @@ public class EnemyFly : Enemy
     public List<Transform> featherAttackPositions = new List<Transform>();
 
     [Header("Attack From Sky")]
-    public Projectile stompPrefab;
+    public Projectile stompFromSkyPrefab;
     public GameObject previewStompPrefab; 
     public Transform outOfScreenPosition;
     public float timeToReaper = 1f;
     public float flyUpSpeedMultiplier = 1.5f;
     public Vector3 offSkyAttack = Vector3.up * 5;
 
+    [Header("Jump Around")]
+    public Projectile stompPrefab;
     public List<Transform> jumpPositions = new List<Transform>();
 
     protected EIdleState idleState;
@@ -73,10 +75,12 @@ public class EnemyFly : Enemy
 
         moveToAttackFromSkyPositionState.onFinish += FromSkyAttack;
         moveToAttackFromSkyPositionState.AnimatorEventName = "Move";
-        reappearState.onAppearPrefab = stompPrefab;
+
+        reappearState.onAppearPrefab = stompFromSkyPrefab;
         reappearState.targetPreviewPrefab = previewStompPrefab;
         reappearState.AnimatorEventName = "Air Attack";
         reappearState.onFinish += GoIdle;
+        reappearState.onLand += ShakeScreen;
 
         idleState.onFinish += PrepareAttack;
 
@@ -85,20 +89,24 @@ public class EnemyFly : Enemy
 
     public void GoIdle()
     {
+        idleState.idleTime = TimeBetweenAttacks;
         stateMachine.ChangeState(idleState);
     }
 
     public void PrepareAttack()
     {
-        int random = Random.Range(0, 9999);
-        if (random == 0)
+        int random = Random.Range(0, 3);
+        switch (random)
         {
-            JumpAround();
-        }
-        else
-        {
-            // MoveToFeatherFirePosition();
-            MoveToSkyAttackPosition();
+            case 1:
+                MoveToSkyAttackPosition();
+                break;
+            case 2:
+                MoveToFeatherFirePosition();
+                break;
+            default:
+                JumpAround();
+                break;
         }
     }
 
@@ -116,8 +124,13 @@ public class EnemyFly : Enemy
 
     public void MoveToFeatherFirePosition()
     {
-        int randomPositionIndex = Random.Range(0, featherAttackPositions.Count);
-        moveToProyectileFirePositionState.position = featherAttackPositions[randomPositionIndex].position;
+        Player player = GameMaster.Instance.Player;
+        // Order by lowest distance to player
+        List<Transform> positions = featherAttackPositions.OrderBy(pos => Vector3.Distance(pos.position, player.transform.position)).ToList();
+        // Remove from posibilities closest to player
+        positions.RemoveAt(0);
+        int randomPositionIndex = Random.Range(0, positions.Count);
+        moveToProyectileFirePositionState.position = positions[randomPositionIndex].position;
         stateMachine.ChangeState(moveToProyectileFirePositionState);
     }
 
@@ -203,5 +216,20 @@ public class EnemyFly : Enemy
             }
         }
         return closestIndex;
+    }
+
+    public void ShakeScreen()
+    {
+        StageCamera.Instance.Shake(Vector2.up);
+    }
+
+    public float TimeBetweenAttacks
+    {
+        get
+        {
+            if (health.HealthPercentage < 0.5f)
+                return timeBetweenAttacks * 0.5f;
+            return timeBetweenAttacks;
+        }
     }
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeaa5a2e49966704bbdfcf3a0b15c0ba, type: 3}
+  m_Name: Damage Up Power
+  m_EditorClassIdentifier: 
+  id: DamageUpPower
+  powerName: Feral
+  description: Increases basic attack's damage by 30%.
+  icon: {fileID: 0}
+  healthCost: 1

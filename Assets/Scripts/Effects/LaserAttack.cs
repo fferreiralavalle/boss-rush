@@ -38,7 +38,7 @@ public class LaserAttack : Projectile
             {
                 if (hitEntity != _creator)
                 {
-                    hitEntity.health.Damage(DamageSummary);
+                    hitEntity.health.Damage(DamageSummaryMod);
                 }
                 else
                 {

@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3679752f2b6aad84db8ec3c26761133d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.1
+  projectile: {fileID: 6082771248597293034}
   swingAmplitudeDegrees: 90
   destroyAfter: 1
 --- !u!114 &6082771248597293034
@@ -286,7 +286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileData: {fileID: 11400000, guid: 8a03cba68b4de2347996779c2d080601, type: 2}
+  canRehitSameEntity: 0
   _targetTypes: 0000000002000000
+  damageMultiplier: 1
 --- !u!50 &2431495829466706047
 Rigidbody2D:
   serializedVersion: 4
