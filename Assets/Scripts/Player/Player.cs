@@ -44,9 +44,11 @@ public class Player : Entity
         mainAttackAction.Enable();
 
         health.onDamage += (DamageSummary damage, float curr) => UIPlayerInfo.Instance.UpdateHealth();
+        health.onHeal += (float heal, float curr) => UIPlayerInfo.Instance.UpdateHealth();
         health.onDamage += ActivateGloryTime;
 
         PowerManager.Instance.onPowerObtain += HandlePowerChange;
+        PowerManager.Instance.onPowerLose += HandlePowerChange;
 
         InitializeStates();
     }
@@ -64,7 +66,11 @@ public class Player : Entity
         mainAttackAction.Disable();
 
         health.onDamage -= (DamageSummary damage, float curr) => UIPlayerInfo.Instance.UpdateHealth();
+        health.onHeal -= (float heal, float curr) => UIPlayerInfo.Instance.UpdateHealth();
         health.onDamage -= ActivateGloryTime;
+
+        PowerManager.Instance.onPowerObtain -= HandlePowerChange;
+        PowerManager.Instance.onPowerLose -= HandlePowerChange;
     }
 
     public void ActivateGloryTime(DamageSummary damage, float curr)

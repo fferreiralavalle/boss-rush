@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void OnDamaged(DamageSummary damageTaken, float currentHealth);
+public delegate void OnHeal(float amount, float currentHealth);
 
 public class Health : MonoBehaviour
 {
@@ -13,13 +15,28 @@ public class Health : MonoBehaviour
     protected float _invulnerableTime = 0f;
 
     public event OnDamaged onDamage;
+    public event OnHeal onHeal;
+    public Action onDeath;
 
     public void Damage(DamageSummary damage)
     {
-        if (maxHealth > 0 && _invulnerableTime <= 0)
+        if (maxHealth > 0 && _invulnerableTime <= 0 && !IsDead)
         {
             _damageTaken += damage.damage;
             onDamage?.Invoke(damage, CurrentHealth);
+            if (IsDead)
+            {
+                onDeath?.Invoke();
+            }
+        }
+    }
+
+    public void Heal(float amount)
+    {
+        if (!IsDead)
+        {
+            _damageTaken = MathF.Max(0, _damageTaken - amount);
+            onHeal?.Invoke(amount, CurrentHealth);
         }
     }
 
@@ -33,4 +50,5 @@ public class Health : MonoBehaviour
 
     public float MaxHealth { get { return maxHealth; } }
     public float InvulnerableTime {  get { return _invulnerableTime; }  set { _invulnerableTime = Mathf.Max(_invulnerableTime, value); } }
+    public bool IsDead { get { return CurrentHealth <= 0; } }
 }

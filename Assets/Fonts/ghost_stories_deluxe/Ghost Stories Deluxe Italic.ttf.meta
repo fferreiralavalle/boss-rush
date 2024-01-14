@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: a96069382650edb4792b4a3e437a788d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Ghost Stories Deluxe
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e191721ea853c5b4088402cf0ed32487, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

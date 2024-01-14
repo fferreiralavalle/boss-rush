@@ -13,7 +13,8 @@ public class BaseDamageUpPower : Power
 
     public override void HandleRemove()
     {
-        _player.playerWeapons.onPrimaryWeaponSpawn -= HandleIncreaseDamage;
+        if (_player)
+            _player.playerWeapons.onPrimaryWeaponSpawn -= HandleIncreaseDamage;
         base.HandleRemove();
     }
 

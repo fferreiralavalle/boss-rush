@@ -16,6 +16,7 @@ public class PowerManager : MonoBehaviour
 
     // Events
     public event OnPowerObtain onPowerObtain;
+    public event OnPowerObtain onPowerLose;
 
     private void Awake()
     {
@@ -53,6 +54,16 @@ public class PowerManager : MonoBehaviour
             Power powerInstance = activePowers[power];
             powerInstance.HandleRemove();
             activePowers.Remove(power);
+            onPowerLose?.Invoke(powerInstance);
+        }
+    }
+
+    public void ReapplyPowers()
+    {
+        Player player = GameMaster.Instance.Player;
+        foreach (Power power in activePowers.Values)
+        {
+            power.Initiate(player, power.powerData);
         }
     }
 
@@ -66,6 +77,11 @@ public class PowerManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public bool IsPowerEquipped(string power)
+    {
+        return activePowers.ContainsKey(power);
     }
 
     public float GetPowersTotalHealthCost()

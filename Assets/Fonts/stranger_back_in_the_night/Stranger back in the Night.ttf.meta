@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 387e4ab518c8bc940bba241d67cb40bb
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Stranger back in the Night
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a5e2048be3b0a504f83e86002561327b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

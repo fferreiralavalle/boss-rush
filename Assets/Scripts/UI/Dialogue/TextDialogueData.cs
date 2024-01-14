@@ -22,6 +22,10 @@ public class TextDialogueData : DialogueData
         {
             speaker.animator.SetBool("Talk", false);
         }
+        if (DialogueMaster.Instance.CurrentDialogue is not TextDialogueData)
+        {
+            DialogueMaster.Instance.CloseDialogueText();
+        }
         base.OnExit();
     }
 

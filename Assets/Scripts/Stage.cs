@@ -5,6 +5,8 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     public Collider2D stageDimensions;
+    public Transform playerSpawn;
+    public bool showPlayerGUI = true;
 
 
     public Vector2 GetSize()

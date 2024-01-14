@@ -7,21 +7,64 @@ public class GameMaster : MonoBehaviour
     public static GameMaster Instance;
 
     public Player playerPrefab;
+    public List<GameStateVariableData> variables = new List<GameStateVariableData>();
+
+    protected Dictionary<string, GameStateVariable> gameStateVariables = new Dictionary<string, GameStateVariable>();
 
     protected Player player;
 
     private void Awake()
     {
         Instance = this;
-        SpawnPlayer(transform.position);
+        IntiateGameVariables();
+        // SpawnPlayer(transform.position);
+    }
+
+    protected void IntiateGameVariables()
+    {
+        foreach (GameStateVariableData variableData in variables)
+        {
+            GameStateVariable variable = new GameStateVariable(variableData.id, variableData.GetInitialValue());
+            gameStateVariables.Add(variable.id, variable);
+        }
     }
 
     public Player SpawnPlayer(Vector3 pos)
     {
-        if (player) Destroy(player.gameObject);
-        player = Instantiate(playerPrefab);
+        if (!player)
+        {
+            player = Instantiate(playerPrefab);
+            PowerManager.Instance.ReapplyPowers();
+        }
         player.transform.position = pos;
         return player;
+    }
+
+    public GameStateVariable GetGameStateVariable(string id)
+    {
+        if (gameStateVariables.ContainsKey(id)) return gameStateVariables[id];
+        return null;
+    }
+
+    public T GetGameStateVariableValue<T>(string id)
+    {
+        GameStateVariable variable = GetGameStateVariable(id);
+        if (variable != null) return variable.GetValue<T>();
+        return default(T);
+    }
+
+    public void SetGameStateVariable(string id, object value)
+    {
+        GameStateVariable variable = GetGameStateVariable(id);
+        if (variable != null)
+        {
+            variable.value = value;
+        }
+    }
+
+    public void HealPlayer()
+    {
+        Player.health.Heal(99999);
     }
 
     public Player Player { get { return player; } }

@@ -8,6 +8,8 @@ public class UIPlayerInfo : MonoBehaviour
 
     public UIHeart heartPrefab;
 
+    public UIMenuAnim anim;
+
     public Transform heartsContainer;
     public int healthPerHeart = 2;
 
@@ -16,9 +18,14 @@ public class UIPlayerInfo : MonoBehaviour
         Instance = this;
     }
 
-    private void OnEnable()
+    public void Show()
     {
-        UpdateMaxHearts();
+        anim.gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        anim.CloseDialog();
     }
 
     public void UpdateMaxHearts()

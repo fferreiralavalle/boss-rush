@@ -39,8 +39,9 @@ public class EnemyFly : Enemy
 
     protected int featherAttacksInARow = 0;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         InitiateStates();
         UpdateUI();
     }
@@ -85,6 +86,7 @@ public class EnemyFly : Enemy
         idleState.onFinish += PrepareAttack;
 
         GoIdle();
+        base.InitiateStates();
     }
 
     public void GoIdle()

@@ -12,6 +12,8 @@ public class BossInfo : MonoBehaviour
     public Color healthColor = Color.black;
     public Color damageColor = Color.white;
 
+    public UIMenuAnim menuAnim;
+
     public float fillChangeSpeed = 0.03f;
     public float shakeTime = 0.3f;
     public Vector3 shakeIntensity = new Vector3(20f, 20f, 0f);
@@ -31,6 +33,12 @@ public class BossInfo : MonoBehaviour
         activeEnemy = enemy;
         targetFillAmount = bossFillbar.fillAmount = enemy.health.CurrentHealth / activeEnemy.health.MaxHealth;
         activeEnemy.health.onDamage += UpdateHealth;
+        menuAnim.gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        menuAnim.CloseDialog(true);
     }
 
     public void UpdateHealth(DamageSummary damage, float currentHealth)

@@ -28,11 +28,11 @@ public class DialogueMaster : MonoBehaviour
 
     public void NextDialogue()
     {
-        if (dialogueIndex >= 0)
-        {
-            dialogueData[dialogueIndex].OnExit();
-        }
         dialogueIndex++;
+        if (dialogueIndex >= 1 && dialogueIndex < dialogueData.Count)
+        {
+            dialogueData[dialogueIndex -1].OnExit();
+        }
         if (dialogueIndex < dialogueData.Count)
         {
             dialogueData[dialogueIndex].OnEnter();
@@ -40,9 +40,18 @@ public class DialogueMaster : MonoBehaviour
         else
         {
             dialogueData = new List<DialogueData> { };
-            dialogueBox.Close();
             GameMaster.Instance.Player.StopListening();
         }
+    }
+
+    public void CloseDialogueText()
+    {
+        dialogueBox?.Close();
+    }
+
+    public DialogueData CurrentDialogue
+    {
+        get { return dialogueIndex < dialogueData.Count ? dialogueData[dialogueIndex] : null; }
     }
 
     public void LoadDialogue(TextDialogueData dialogue)
