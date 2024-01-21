@@ -7,6 +7,7 @@ public class BossDefeater : MonoBehaviour
     public Enemy boss;
     public float slowTimeDuration = 4f;
     public float slowTimeAmount = 0.5f;
+    public AudioData onDefeatMusic;
 
     public List<DialogueData> dialoguesOnDefeat = new List<DialogueData>();
 
@@ -20,6 +21,7 @@ public class BossDefeater : MonoBehaviour
     {
         Time.timeScale = slowTimeAmount;
         GameMaster.Instance.Player.health.InvulnerableTime = 7;
+        AudioMaster.Instance.PlayMusic(onDefeatMusic);
         StartCoroutine(HandleDefeatRoutine());
     }
 

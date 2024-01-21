@@ -15,8 +15,8 @@ public class PMainAttack : PState
     {
         Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector3 playerPos = Camera.main.WorldToScreenPoint(_player.transform.position);
-        Debug.Log("Mouse world pos " + mouseScreenPos);
         attackTimeLeft = _player.playerWeapons.mainWeaponAttack.projectileData.inmobileTime;
+        UpdateAnimatorDirection(_player, mouseScreenPos - playerPos);
         _player.playerWeapons.SpawnMainWeaponAttack(_player, mouseScreenPos - playerPos);
         base.Enter();
     }

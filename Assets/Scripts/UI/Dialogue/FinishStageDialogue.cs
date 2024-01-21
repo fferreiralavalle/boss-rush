@@ -11,7 +11,7 @@ public class FinishStageDialogue : DialogueData
         NextStageManager.Instance.GenerateNextStage();
         DialogueMaster.Instance.NextDialogue();
         StageManager.Instance.GoToBaseStage();
-        GameMaster.Instance.HealPlayer();
+        GameMaster.Instance.ResetPlayBars();
         base.OnEnter();
     }
 

@@ -19,13 +19,20 @@ public class EnemyChargeAtPlayer : Enemy
     public Projectile blastPrefab;
     public Projectile stompPrefab;
 
+    [Header("Laser Attack")]
+    public Projectile laserPrefab;
+    public int laserAmount = 3;
+    public float laserAttackDuration = 5f;
+    public Transform laserSpawnPosition;
+
 
     protected EIdleState idleState;
     protected EChargeAtPointState chargeState;
     protected EBlastAreaState shakeGroundState;
     protected EJumpAroundState jumpAroundState;
+    protected ELaserProjectileState laserProjectileState;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
         InitiateStates();
         UpdateUI();
@@ -38,10 +45,12 @@ public class EnemyChargeAtPlayer : Enemy
 
     public override void InitiateStates()
     {
+        base.InitiateStates();
         chargeState = new EChargeAtPointState(this, wantedDistance);
         idleState = new EIdleState(this, timeBetweenAttacks);
         shakeGroundState = new EBlastAreaState(this, blastPrefab);
         jumpAroundState = new EJumpAroundState(this, moveController.speed * 2f, 1f);
+        laserProjectileState = new ELaserProjectileState(this, laserPrefab, laserAmount, laserSpawnPosition, laserAttackDuration);
 
         chargeState.damageTouch = new DamageTouch(chargeDamage, chargeCollider);
 
@@ -55,6 +64,8 @@ public class EnemyChargeAtPlayer : Enemy
         jumpAroundState.animatorStompEventName = "Stomp";
 
         shakeGroundState.onFinish += GoIdle;
+
+        laserProjectileState.onFinish += GoIdle;
 
         idleState.onFinish += PrepareAttack;
 
@@ -71,7 +82,7 @@ public class EnemyChargeAtPlayer : Enemy
         int random = UnityEngine.Random.Range(0, 2);
         if (random == 0)
         {
-            ChargeTarget();
+            LaserAttack();
         }
         else
         {
@@ -87,6 +98,11 @@ public class EnemyChargeAtPlayer : Enemy
             chargeState.Target = player.transform.position;
             stateMachine.ChangeState(chargeState);
         }
+    }
+
+    public void LaserAttack()
+    {
+        stateMachine.ChangeState(laserProjectileState);
     }
 
     public void JumpAround()

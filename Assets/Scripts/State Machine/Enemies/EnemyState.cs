@@ -9,6 +9,7 @@ public class EnemyState : State
 
     public DamageTouch damageTouch;
 
+    protected List<Projectile> projectiles = new List<Projectile>();
 
     public EnemyState(Enemy enemy)
     {
@@ -17,13 +18,16 @@ public class EnemyState : State
 
     public override void Enter()
     {
-        _enemy.animator.SetBool(AnimatorEventName, true);
+        if (_enemy.animator)
+            _enemy.animator.SetBool(AnimatorEventName, true);
+        projectiles = new List<Projectile>();
         base.Enter();
     }
 
     public override void Leave()
     {
-        _enemy.animator.SetBool(AnimatorEventName, false);
+        if (_enemy.animator)
+            _enemy.animator.SetBool(AnimatorEventName, false);
         base.Leave();
     }
 

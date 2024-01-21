@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: AttackSizeUp
   powerName: Mighty
-  description: Increases Main Attack Size by 100%.
+  description: Increases Main Attack Size by 30%.
   icon: {fileID: 0}
   healthCost: 1

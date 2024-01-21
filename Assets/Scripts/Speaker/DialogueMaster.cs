@@ -20,7 +20,6 @@ public class DialogueMaster : MonoBehaviour
     public void StartDialogue(List<DialogueData> dialogue)
     {
         dialogueIndex = -1;
-        dialogueBox.gameObject.SetActive(true);
         dialogueData = new List<DialogueData>(dialogue);
         GameMaster.Instance.Player.StartListening();
         NextDialogue();
@@ -56,6 +55,7 @@ public class DialogueMaster : MonoBehaviour
 
     public void LoadDialogue(TextDialogueData dialogue)
     {
+        dialogueBox.gameObject.SetActive(true);
         dialogueBox.Load(dialogue);
     }
 

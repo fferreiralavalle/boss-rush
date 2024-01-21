@@ -64,6 +64,7 @@ public class EJumpAroundState : EnemyState
         // We a bit and then we jump again
         if (_timePassed > stayInTargetDuration)
         {
+            StageCamera.Instance.Shake(Vector2.up * 0.5f);
             _enemy.animator.SetBool(animatorStompEventName, false);
             jumping = true;
             _timePassed = 0;

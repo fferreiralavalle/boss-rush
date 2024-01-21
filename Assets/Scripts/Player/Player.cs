@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,29 +7,47 @@ public delegate void OnProjectileSpawn(Projectile projectile);
 public class Player : Entity
 {
     public float baseHealth = 10f;
+    public Health specialBar;
     public PlayerWeapons playerWeapons;
     public PlayerInputs playerInput;
 
+    public float specialChargeGainedPerHit = 0.25f;
+    public float specialChargeGainedPerHealthLost = 1f;
     public float invulnerabilityAfterHit = 0.5f;
+    [Header("Dash")]
     public float dashInvulnerability = 0.7f;
     public float dashDistance = 2f;
     public float dashDuration = 1f;
+    public float dashCooldown = 0.25f;
+    public AudioData dashSound;
 
     public InputAction moveAction;
     public InputAction dashAction;
     public InputAction mainAttackAction;
+    public InputAction specialAttackAction;
 
     protected PIdleState _idleState;
     protected PMoveState _moveState;
     protected PDashState _dashState;
     protected PMainAttack _mainAttackState;
+    protected PSpecialAttack _specialAttackState;
     protected PListening _listenState;
+    protected PDeadState _deadState;
 
     protected Speaker speakerClose;
+    protected float _timePassedFromDash = 0f;
+
+    public Action onDashEnd;
 
     private void Awake()
     {
         playerInput = new PlayerInputs();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        _timePassedFromDash += Time.deltaTime;
     }
 
     private void OnEnable()
@@ -42,15 +58,27 @@ public class Player : Entity
         dashAction.Enable();
         mainAttackAction = playerInput.Player.Fire;
         mainAttackAction.Enable();
+        specialAttackAction = playerInput.Player.Special;
+        specialAttackAction.Enable();
+        specialBar.Damage(new DamageSummary(9999));
 
-        health.onDamage += (DamageSummary damage, float curr) => UIPlayerInfo.Instance.UpdateHealth();
+        health.onDamage += HandleGetHit;
         health.onHeal += (float heal, float curr) => UIPlayerInfo.Instance.UpdateHealth();
         health.onDamage += ActivateGloryTime;
+        health.onDeath += HandleDeath;
+        specialBar.onDamage += (DamageSummary damage, float curr) => UIPlayerInfo.Instance.UpdateSpecialbar();
+        specialBar.onHeal += (float heal, float curr) => UIPlayerInfo.Instance.UpdateSpecialbar();
 
         PowerManager.Instance.onPowerObtain += HandlePowerChange;
         PowerManager.Instance.onPowerLose += HandlePowerChange;
 
         InitializeStates();
+    }
+
+    public void HandleGetHit(DamageSummary damage, float curr)
+    {
+        UIPlayerInfo.Instance.UpdateHealth();
+        specialBar.Heal(damage.damage * specialChargeGainedPerHealthLost, true);
     }
 
     public void HandlePowerChange(Power change)
@@ -65,7 +93,7 @@ public class Player : Entity
         dashAction.Disable();
         mainAttackAction.Disable();
 
-        health.onDamage -= (DamageSummary damage, float curr) => UIPlayerInfo.Instance.UpdateHealth();
+        health.onDamage -= HandleGetHit;
         health.onHeal -= (float heal, float curr) => UIPlayerInfo.Instance.UpdateHealth();
         health.onDamage -= ActivateGloryTime;
 
@@ -89,19 +117,24 @@ public class Player : Entity
         _dashState = new PDashState(this);
         _mainAttackState = new PMainAttack(this);
         _listenState = new PListening(this);
+        _specialAttackState = new PSpecialAttack(this);
+        _deadState = new PDeadState(this, 2f);
 
         stateMachine.ChangeState(_idleState);
 
         _idleState.onMove += HandleMove;
         _idleState.onMainAttack += HandleMainAttack;
+        _idleState.onSpecialAttack += HandleSpecialAttack;
 
         _moveState.onStop += HandleIdle;
         _moveState.onDash += HandleDash;
         _moveState.onMainAttack += HandleMainAttack;
+        _moveState.onSpecialAttack += HandleSpecialAttack;
 
         _mainAttackState.onFinish += HandleMove;
+        _specialAttackState.onFinish += HandleMove;
 
-        _dashState.onFinish += HandleMove;
+        _dashState.onFinish += HandleDashEnd;
 
     }
 
@@ -111,11 +144,24 @@ public class Player : Entity
     }
     public void HandleMove()
     {
-        stateMachine.ChangeState(_moveState);
+        if (Vector2.Distance(moveAction.ReadValue<Vector2>(), Vector2.zero) == 0)
+            HandleIdle();
+        else
+            stateMachine.ChangeState(_moveState);
     }
     public void HandleDash()
     {
-        stateMachine.ChangeState(_dashState);
+        if (_timePassedFromDash >= dashCooldown)
+        {
+            AudioMaster.Instance.PlaySoundEffect(dashSound);
+            stateMachine.ChangeState(_dashState);
+        }
+    }
+    public void HandleDashEnd()
+    {
+        _timePassedFromDash = 0;
+        onDashEnd?.Invoke();
+        HandleMove();
     }
     public void HandleMainAttack()
     {
@@ -129,6 +175,20 @@ public class Player : Entity
         }
     }
 
+    public void HandleSpecialAttack()
+    {
+        if (specialBar.CurrentHealth >= specialBar.MaxHealth)
+        {
+            stateMachine.ChangeState(_specialAttackState);
+            specialBar.Damage(new DamageSummary(9999));
+        }
+    }
+
+    public void HandleDeath()
+    {
+        stateMachine.ChangeState(_deadState);
+    }
+
     public void StartListening()
     {
         stateMachine.ChangeState(_listenState);
@@ -137,6 +197,11 @@ public class Player : Entity
     public void StopListening()
     {
         HandleIdle();
+    }
+
+    public void Revive()
+    {
+        stateMachine.ChangeState(_idleState);
     }
 
     public Speaker SpeakerClose { get { return speakerClose; } set { speakerClose = value; } }

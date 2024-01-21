@@ -17,8 +17,9 @@ public class BlastAttack : Projectile
         lineRenderer = GetComponent<LineRenderer>();
     }
 
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         StartCoroutine(Blast());
     }
 
@@ -27,12 +28,13 @@ public class BlastAttack : Projectile
     {
         float currentRadius = 0f;
 
-        while (currentRadius < maxRadius) {
+        while (currentRadius < maxRadius && !destroyed) {
             currentRadius = Mathf.MoveTowards(currentRadius, maxRadius, Time.deltaTime * speed);
             Draw(currentRadius);
             Damage(currentRadius);
             yield return null;
         }
+        HandleRemove();
     }
 
     private void Draw(float currentRadius)
@@ -59,11 +61,12 @@ public class BlastAttack : Projectile
             if (!safeInnerCircle.Contains(hittingObjects[i]))
             {
                 Entity entity = hittingObjects[i].GetComponent<Entity>();
-                if (entity == null) continue;
+                if (entity == null || _entitiesHit.Contains(entity)) continue;
                 Health health = entity.health;
                 if (health && _targetTypes.Contains(health.healthType))
                 {
                     health.Damage(DamageSummaryMod);
+                    _entitiesHit.Add(entity);
                 }
             }
         }

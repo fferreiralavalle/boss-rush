@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +6,7 @@ public class PMoveState : PState
     public event OnMove onStop;
     public event OnMove onDash;
     public event OnMove onMainAttack;
+    public event OnMove onSpecialAttack;
 
     public PMoveState(Player player) : base(player)
     {
@@ -17,14 +15,8 @@ public class PMoveState : PState
 
     public override void Enter()
     {
-        if (Vector2.Distance(_player.moveAction.ReadValue<Vector2>(), Vector2.zero) == 0)
-        {
-            onStop?.Invoke();
-            return;
-        }
         _player.moveAction.canceled += HandleMoveStart;
         _player.dashAction.performed += HandleDashStart;
-        _player.mainAttackAction.performed += HandleMainAttack;
         base.Enter();
     }
 
@@ -32,7 +24,6 @@ public class PMoveState : PState
     {
         _player.moveAction.canceled -= HandleMoveStart;
         _player.dashAction.performed -= HandleDashStart;
-        _player.mainAttackAction.performed -= HandleMainAttack;
         base.Leave();
     }
 
@@ -58,5 +49,10 @@ public class PMoveState : PState
     public override void HandleMainAttack(InputAction.CallbackContext context)
     {
         onMainAttack?.Invoke();
+    }
+
+    public override void HandleSpecial(InputAction.CallbackContext context)
+    {
+        onSpecialAttack?.Invoke();
     }
 }

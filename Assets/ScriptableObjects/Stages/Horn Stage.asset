@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf7ed77c6be2c546af2991caddd878d, type: 3}
   m_Name: Horn Stage
   m_EditorClassIdentifier: 
-  stage: {fileID: 7150485381088320225, guid: 4a89e6d457a8c9b42ad57e72b27af5a2, type: 3}
+  stage: {fileID: 1636134278488412090, guid: f61c484fd3abe3348a80261c2e62bdef, type: 3}
   transition: {fileID: 7194958367509299532, guid: d7b887edc95f52e48a4daeb215f29ab7, type: 3}
   preview: {fileID: 0}
-  isCompleteStateVariable: {fileID: 11400000, guid: 5cf9a4af56dea1c4481e5ffde979752a, type: 2}
+  isCompleteStateVariable: {fileID: 11400000, guid: 03a5fa1496d18504780744aa658decec, type: 2}

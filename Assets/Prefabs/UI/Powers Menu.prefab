@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5}
-  m_SizeDelta: {x: 0, y: -10}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4100867456147854540
 CanvasRenderer:
@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Confirm
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ef8436bf48163124fa22fbab6440f7a4, type: 2}
-  m_sharedMaterial: {fileID: -4168648723175987546, guid: ef8436bf48163124fa22fbab6440f7a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3a65c7df8fb76154c97f919548c1adec, type: 2}
+  m_sharedMaterial: {fileID: -1952834851608980515, guid: 3a65c7df8fb76154c97f919548c1adec, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -278,7 +278,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8436182789841949472}
+  - {fileID: 8067658670730460435}
   m_Father: {fileID: 3263583894285262128}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -426,8 +426,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6d7fd8e11b010a14ca75243722d15c42, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -581,8 +581,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ecf1dda8d8aa9a489a80290aee3b62a, type: 3}
---- !u!224 &8436182789841949472 stripped
+--- !u!224 &8067658670730460435 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8513218020874716107, guid: 4ecf1dda8d8aa9a489a80290aee3b62a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7836340260404932088, guid: 4ecf1dda8d8aa9a489a80290aee3b62a, type: 3}
   m_PrefabInstance: {fileID: 231461644532322539}
   m_PrefabAsset: {fileID: 0}

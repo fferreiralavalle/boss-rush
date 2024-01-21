@@ -1,0 +1,810 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7397737538790330014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1883850534741143290}
+  - component: {fileID: 1836036016110173605}
+  m_Layer: 0
+  m_Name: Projectile Orbit Group
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1883850534741143290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397737538790330014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8595078329475241764}
+  - {fileID: 3721006076778049060}
+  - {fileID: 4692550590355236975}
+  - {fileID: 9187567838810822640}
+  - {fileID: 1009633601601006079}
+  - {fileID: 4759544048816863786}
+  - {fileID: 8075911582373693370}
+  - {fileID: 8576435498613598170}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836036016110173605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397737538790330014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff1fc698f54f384c87b607e74cf418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileData: {fileID: 11400000, guid: 486d107ea7fe6184082807179ad900be, type: 2}
+  canRehitSameEntity: 0
+  _targetTypes: 
+  dontAutodestroy: 0
+  onDestroySpawn: {fileID: 0}
+  onHitSpawn: {fileID: 0}
+  damageMultiplier: 1
+  projectileChildren:
+  - {fileID: 7872772157956162250}
+  - {fileID: 3001022347084528586}
+  - {fileID: 6564321109196144001}
+  - {fileID: 7315713756985082398}
+  - {fileID: 1442452371172916241}
+  - {fileID: 6344202687560167364}
+  - {fileID: 7644025187537474132}
+  - {fileID: 7855386084438340148}
+--- !u!1001 &593638656614125089
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1883850534741143290}
+    m_Modifications:
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: maxDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: initialAngle
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistanceSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Name
+      value: Orbit Fire Projectile (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+--- !u!4 &4759544048816863786 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 593638656614125089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6344202687560167364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 593638656614125089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd729871863683243999eedf182f7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &805865919330720868
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1883850534741143290}
+    m_Modifications:
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: maxDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: initialAngle
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistanceSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Name
+      value: Orbit Fire Projectile (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+--- !u!4 &4692550590355236975 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 805865919330720868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6564321109196144001 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 805865919330720868}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd729871863683243999eedf182f7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &3868740975169774587
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1883850534741143290}
+    m_Modifications:
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: maxDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: initialAngle
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistanceSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Name
+      value: Orbit Fire Projectile (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+--- !u!114 &7315713756985082398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 3868740975169774587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd729871863683243999eedf182f7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &9187567838810822640 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 3868740975169774587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4189242540865205169
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1883850534741143290}
+    m_Modifications:
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: maxDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: initialAngle
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistanceSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Name
+      value: Orbit Fire Projectile (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+--- !u!114 &7644025187537474132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 4189242540865205169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd729871863683243999eedf182f7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8075911582373693370 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 4189242540865205169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4410666205254816721
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1883850534741143290}
+    m_Modifications:
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: maxDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: initialAngle
+      value: 315
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistanceSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Name
+      value: Orbit Fire Projectile (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+--- !u!114 &7855386084438340148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 4410666205254816721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd729871863683243999eedf182f7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8576435498613598170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 4410666205254816721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4429168313689891631
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1883850534741143290}
+    m_Modifications:
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: maxDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistanceSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Name
+      value: Orbit Fire Projectile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+--- !u!114 &7872772157956162250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 4429168313689891631}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd729871863683243999eedf182f7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8595078329475241764 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 4429168313689891631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4914196060090965492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1883850534741143290}
+    m_Modifications:
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: maxDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: initialAngle
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistanceSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Name
+      value: Orbit Fire Projectile (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+--- !u!4 &1009633601601006079 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 4914196060090965492}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1442452371172916241 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 4914196060090965492}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd729871863683243999eedf182f7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &8760592407441807919
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1883850534741143290}
+    m_Modifications:
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: maxDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: initialAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: centerDistanceSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Name
+      value: Orbit Fire Projectile (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+--- !u!114 &3001022347084528586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 8760592407441807919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd729871863683243999eedf182f7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &3721006076778049060 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5345855422502892555, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+  m_PrefabInstance: {fileID: 8760592407441807919}
+  m_PrefabAsset: {fileID: 0}

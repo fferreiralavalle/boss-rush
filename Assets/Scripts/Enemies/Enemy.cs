@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
-
 public class Enemy : Entity
 {
     public bool isNotBoss = false;
 
-    protected EDeath deathState;
+    protected EDeath _deathState;
+    protected EIdleState _inactiveState;
 
     public override void InitiateStates()
     {
         base.InitiateStates();
-        deathState = new EDeath(this);
+        _deathState = new EDeath(this);
+        _inactiveState = new EIdleState(this, 99999999);
+
+        GameMaster.Instance.Player.health.onDeath += Deactivate;
     }
 
     public virtual void OnEnable()
@@ -22,6 +21,11 @@ public class Enemy : Entity
 
     public virtual void HandleDeath()
     {
-        stateMachine.ChangeState(deathState);
+        stateMachine.ChangeState(_deathState);
+    }
+
+    public void Deactivate()
+    {
+        stateMachine.ChangeState(_inactiveState);
     }
 }

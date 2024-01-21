@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerData: {fileID: 11400000, guid: 26fd15a7190435542b2f9c87cd95bfe0, type: 2}
-  sizeIncreaseMultiplier: 2
+  sizeIncreaseMultiplier: 1.3

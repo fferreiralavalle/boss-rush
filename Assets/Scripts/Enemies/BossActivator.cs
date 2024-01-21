@@ -6,9 +6,10 @@ public class BossActivator : MonoBehaviour
 {
     public Enemy enemy;
 
+    public List<DialogueData> dialoguesOnEncounter = new List<DialogueData>();
 
     public void Start()
     {
-        enemy.gameObject.SetActive(true);
+        DialogueMaster.Instance.StartDialogue(dialoguesOnEncounter);
     }
 }

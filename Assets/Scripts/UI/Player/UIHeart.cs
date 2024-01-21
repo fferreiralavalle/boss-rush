@@ -17,4 +17,14 @@ public class UIHeart : MonoBehaviour
         animator.SetInteger("amount", amount);
         return this;
     }
+
+    public void Appear()
+    {
+        animator.SetBool("visible", true);
+    }
+
+    public void Hide()
+    {
+        animator.SetBool("visible", false);
+    }
 }

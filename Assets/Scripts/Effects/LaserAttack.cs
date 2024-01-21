@@ -12,23 +12,48 @@ public class LaserAttack : Projectile
     public Transform laserFirePoint;
     public LineRenderer lineRenderer;
     public Vector3 direction;
-    public float lineHitboxMultiplier = 0.5f;
     public string[] layersToHit = new string[] { "Default" };
 
     [SerializeField] protected float defDistanceRay = 20f;
+    public float warnWidth = 0.1f;
+    public float warnTime = 0.5f;
+    public float turnOffWidthDecreaseSpeed = 1f;
+    protected bool isOff = false;
+    protected bool isStarting = true;
+
+    protected float _initialWidth = 1;
+    protected float _timePassed = 0;
+
+    private void Awake()
+    {
+        _initialWidth = lineRenderer.widthMultiplier;
+        lineRenderer.widthMultiplier = warnWidth;
+    }
 
     private void Update()
     {
+        if (isOff)
+        {
+            lineRenderer.widthMultiplier = Mathf.MoveTowards(lineRenderer.widthMultiplier, 0, turnOffWidthDecreaseSpeed * Time.deltaTime);
+            if (lineRenderer.widthMultiplier == 0)
+                Destroy(gameObject);
+        }
+        else if (isStarting)
+        {
+            _timePassed += Time.deltaTime;
+            if (_timePassed >= warnTime)
+            {
+                lineRenderer.widthMultiplier = Mathf.MoveTowards(lineRenderer.widthMultiplier, _initialWidth, turnOffWidthDecreaseSpeed * Time.deltaTime);
+                if (lineRenderer.widthMultiplier == _initialWidth)
+                    isStarting = false;
+            }
+        }
         ShootLaser();
     }
 
     void ShootLaser()
     {
         LayerMask layer_mask = LayerMask.GetMask(layersToHit);
-        float angle = Mathf.Atan2(direction.y, direction.x);
-        Vector2 size = new Vector2(defDistanceRay / 2, lineRenderer.widthMultiplier * lineHitboxMultiplier);
-        Vector2 finalOrigin = (Vector2)laserFirePoint.position + size / 2f;
-        // if (Physics2D.CapsuleCast(finalOrigin, size, CapsuleDirection2D.Horizontal, angle, direction, defDistanceRay, layer_mask))
         if (Physics2D.Raycast(laserFirePoint.position, direction, defDistanceRay, layer_mask))
         {
             RaycastHit2D _hit = Physics2D.Raycast(laserFirePoint.position, direction, defDistanceRay, layer_mask);
@@ -38,7 +63,8 @@ public class LaserAttack : Projectile
             {
                 if (hitEntity != _creator)
                 {
-                    hitEntity.health.Damage(DamageSummaryMod);
+                    if (CanHit)
+                        hitEntity.health.Damage(DamageSummaryMod);
                 }
                 else
                 {
@@ -46,12 +72,12 @@ public class LaserAttack : Projectile
                 }
             }
             if (!hitCreator)
+            {
                 Draw2DRay(laserFirePoint.position, _hit.point);
+                return;
+            }
         }
-        else
-        {
-            Draw2DRay(laserFirePoint.position, laserFirePoint.position + direction * defDistanceRay);
-        }
+        Draw2DRay(laserFirePoint.position, laserFirePoint.position + direction * defDistanceRay);
     }
 
     private void Draw2DRay(Vector3 startPos, Vector2 endPos)
@@ -59,4 +85,11 @@ public class LaserAttack : Projectile
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
     }
+
+    public override void HandleRemove()
+    {
+        isOff = true;
+    }
+
+    public bool CanHit { get { return !isStarting && !isOff; } }
 }

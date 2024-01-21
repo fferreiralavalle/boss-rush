@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
     {
         if (maxHealth > 0 && _invulnerableTime <= 0 && !IsDead)
         {
-            _damageTaken += damage.damage;
+            _damageTaken = Mathf.Min(maxHealth, _damageTaken + damage.damage);
             onDamage?.Invoke(damage, CurrentHealth);
             if (IsDead)
             {
@@ -31,9 +31,9 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void Heal(float amount)
+    public void Heal(float amount, bool allowRevive = false)
     {
-        if (!IsDead)
+        if (!IsDead || allowRevive)
         {
             _damageTaken = MathF.Max(0, _damageTaken - amount);
             onHeal?.Invoke(amount, CurrentHealth);

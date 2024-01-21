@@ -67,6 +67,15 @@ public class PowerManager : MonoBehaviour
         }
     }
 
+    public void RemoveAllPowers()
+    {
+        foreach (Power power in activePowers.Values)
+        {
+            power.HandleRemove();
+        }
+        activePowers = new Dictionary<string, Power> { };
+    }
+
     public Power GetPower(string power)
     {
         foreach(Power powerData in powerDataList)

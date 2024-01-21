@@ -16,12 +16,16 @@ public class PState : State
     public override void Enter()
     {
         base.Enter();
+        _player.mainAttackAction.performed += HandleMainAttack;
+        _player.specialAttackAction.performed += HandleSpecial;
         _player.animator.SetBool(animatorEventName, true);
     }
 
     public override void Leave()
     {
         base.Leave();
+        _player.mainAttackAction.performed -= HandleMainAttack;
+        _player.specialAttackAction.performed -= HandleSpecial;
         _player.animator.SetBool(animatorEventName, false);
     }
     public override void OnFixedUpdate()

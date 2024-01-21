@@ -42,7 +42,9 @@ public class ELineProjectiles : EnemyState
             Vector3 positionDiff = direction * spawnDistanceFromCenter;
             Projectile projectile = Object.Instantiate(spawnPrefab).Initiate(_enemy);
             projectile.transform.position = spawnPosition.position + positionDiff;
-            projectile.GetComponent<LineMove>().direction = direction;
+            if (projectile.GetComponent<LineMove>())
+                projectile.GetComponent<LineMove>().direction = direction;
+            projectile.transform.Rotate(0, 0, angle);
         }
     }
 

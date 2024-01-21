@@ -22,6 +22,7 @@ public class GameMaster : MonoBehaviour
 
     protected void IntiateGameVariables()
     {
+        gameStateVariables.Clear();
         foreach (GameStateVariableData variableData in variables)
         {
             GameStateVariable variable = new GameStateVariable(variableData.id, variableData.GetInitialValue());
@@ -62,9 +63,17 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    public void HealPlayer()
+    public void ResetGameState()
     {
-        Player.health.Heal(99999);
+        IntiateGameVariables();
+        PowerManager.Instance.RemoveAllPowers();
+    }
+
+    public void ResetPlayBars()
+    {
+        Player.health.Heal(99999, true);
+        Player.specialBar.Damage(new DamageSummary(99999));
+        Player.Revive();
     }
 
     public Player Player { get { return player; } }
