@@ -10,6 +10,7 @@ public class EBanishAndReappearState : EnemyState
     public GameObject targetPreviewPrefab;
     public float timeToReppear = 1f;
     public float speedMultiplier = 1.5f;
+    public string landAnim = "Land";
 
     protected GameObject warningInstance;
     protected bool dontReadjustPosition = false;

@@ -15,6 +15,14 @@ public class EnemyJump : Enemy
     public float vomitDuration = 2;
     public List<Transform> vomitStagePositions = new List<Transform>();
 
+    [Header("Orbit Attack")]
+    public Projectile orbitAttackPrefab;
+    public Transform orbitSpawnPosition;
+    public int orbitProjectileAmount = 12;
+    public int orbitWaveAmount = 4;
+    public float orbitAttackDuration = 2;
+    public List<Transform> orbitAttackPositions = new List<Transform>();
+
     [Header("Attack From Sky")]
     public Projectile stompFromSkyPrefab;
     public GameObject previewStompPrefab;
@@ -30,6 +38,10 @@ public class EnemyJump : Enemy
     protected EIdleState idleState;
     protected EJumpAroundState jumpAroundState;
 
+    // Orbit Attack States
+    protected EOrbitProjectile orbitProjectileState;
+    protected EMoveToPosition moveToOrbitProyectilePositionState;
+
     // Vomit Attack States
     protected ELineProjectiles throwProjectileState;
     protected EMoveToPosition moveToProyectileFirePositionState;
@@ -38,7 +50,7 @@ public class EnemyJump : Enemy
     protected EMoveToPosition moveToAttackFromSkyPositionState;
     protected EBanishAndReappearState reappearState;
 
-    protected int _currentVomitWaves = 0;
+    protected int _currentWaves = 0;
 
     public override void OnEnable()
     {
@@ -55,6 +67,13 @@ public class EnemyJump : Enemy
     public override void InitiateStates()
     {
         idleState = new EIdleState(this, timeBetweenAttacks);
+
+        // Orbit Attack
+        orbitProjectileState = new EOrbitProjectile(this, orbitAttackPrefab, orbitProjectileAmount, orbitSpawnPosition, orbitAttackDuration);
+        moveToOrbitProyectilePositionState = new EMoveToPosition(this, orbitAttackPositions[0].position, 2f);
+
+        orbitProjectileState.onFinish += HandleOrbitAttackEnd;
+        moveToOrbitProyectilePositionState.onFinish += FireOrbitAttackWaves;
 
         moveToProyectileFirePositionState = new EMoveToPosition(this, vomitStagePositions[0].position);
         throwProjectileState = new ELineProjectiles(this, vomitAttackProjectile, proyectileAmount, vomitSpawnPosition, vomitDuration);
@@ -101,11 +120,14 @@ public class EnemyJump : Enemy
 
     public void PrepareAttack()
     {
-        int random = Random.Range(0, 2);
+        int random = Random.Range(0, 3);
         switch (random)
         {
             case 1:
                 MoveToSkyAttackPosition();
+                break;
+            case 2:
+                MoveToOrbitAttackPosition();
                 break;
             default:
                 MoveToVomitPosition();
@@ -125,6 +147,34 @@ public class EnemyJump : Enemy
         stateMachine.ChangeState(reappearState);
     }
 
+    public void MoveToOrbitAttackPosition()
+    {
+        int farthestIndex = Utils.GetPositionIndexFarthestToPlayer(orbitAttackPositions);
+        moveToOrbitProyectilePositionState.position = orbitAttackPositions[farthestIndex].position;
+        stateMachine.ChangeState(moveToOrbitProyectilePositionState);
+    }
+
+    public void FireOrbitAttackWaves()
+    {
+        stateMachine.ChangeState(orbitProjectileState);
+    }
+
+    public void HandleOrbitAttackEnd()
+    {
+        _currentWaves++;
+        if (_currentWaves < orbitWaveAmount)
+        {
+            orbitProjectileState.maxDistanceMod = -1 * _currentWaves;
+            FireOrbitAttackWaves();
+        }
+        else
+        {
+            _currentWaves = 0;
+            orbitProjectileState.maxDistanceMod = 0f;
+            JumpAround();
+        }
+    }
+
     public void MoveToVomitPosition()
     {
         int index = GetPositionIndexFarthestToPlayer(vomitStagePositions);
@@ -140,10 +190,10 @@ public class EnemyJump : Enemy
 
     public void HandleVomitEnd()
     {
-        _currentVomitWaves++;
-        if (_currentVomitWaves >= vomitWaves)
+        _currentWaves++;
+        if (_currentWaves >= vomitWaves)
         {
-            _currentVomitWaves = 0;
+            _currentWaves = 0;
             GoIdle();
         }
         else

@@ -14,7 +14,7 @@ public class EnemyAggro : Enemy
 
     public override void InitiateStates()
     {
-        chaseState = new EChaseState(this, wantedDistance);
+        // chaseState = new EChaseState(this, wantedDistance, new DamageTouch);
     }
 
     private void Start()

@@ -7,16 +7,19 @@ using UnityEngine;
 
 public class EnemyChargeAtPlayer : Enemy
 {
+    public float timeBetweenAttacks = 2f;
     public Vector2 stompShakePower = Vector2.up * 1;
     public float minJumpDistance = 5f;
     public List<Transform> jumpPositions = new List<Transform>();
 
+    [Header("Charge Attack")]
+    public float prepareTime = 0.4f;
     public float wantedDistance = 0.1f;
-    public float timeBetweenAttacks = 2f;
     public DamageSummary chargeDamage;
     public Collider2D chargeCollider;
-
-    public Projectile blastPrefab;
+    public AudioData chargeAudio;
+    public int chargeWaveAmount = 3;
+    
     public Projectile stompPrefab;
 
     [Header("Laser Attack")]
@@ -25,12 +28,24 @@ public class EnemyChargeAtPlayer : Enemy
     public float laserAttackDuration = 5f;
     public Transform laserSpawnPosition;
 
+    [Header("Howl Attack")]
+    public Projectile howlWavePrefab;
+    public List<Transform> howlPositions = new List<Transform>();
+    public int howlWaves = 3;
+    public float timeBetweenWaves = 0.3f;
 
     protected EIdleState idleState;
+    // Charge State
+    protected EIdleState prepareToChargeState;
     protected EChargeAtPointState chargeState;
-    protected EBlastAreaState shakeGroundState;
+    // Howl State
+    protected EMoveToPosition moveToHowlPositionState;
+    protected EBlastAreaState howlState;
+    // Others
     protected EJumpAroundState jumpAroundState;
     protected ELaserProjectileState laserProjectileState;
+
+    protected int _attackWavesAmount = 0;
 
     public override void OnEnable()
     {
@@ -46,24 +61,32 @@ public class EnemyChargeAtPlayer : Enemy
     public override void InitiateStates()
     {
         base.InitiateStates();
-        chargeState = new EChargeAtPointState(this, wantedDistance);
+        chargeState = new EChargeAtPointState(this, wantedDistance, new DamageTouch(chargeDamage, chargeCollider));
         idleState = new EIdleState(this, timeBetweenAttacks);
-        shakeGroundState = new EBlastAreaState(this, blastPrefab);
+        // Howl
+        howlState = new EBlastAreaState(this, howlWavePrefab);
+        moveToHowlPositionState = new EMoveToPosition(this, howlPositions[0].position);
+
+        moveToHowlPositionState.onFinish += HowlAttack;
+        howlState.onFinish += HandleHowlEnd;
+
         jumpAroundState = new EJumpAroundState(this, moveController.speed * 2f, 1f);
         laserProjectileState = new ELaserProjectileState(this, laserPrefab, laserAmount, laserSpawnPosition, laserAttackDuration);
 
-        chargeState.damageTouch = new DamageTouch(chargeDamage, chargeCollider);
+        // Charge State
+        prepareToChargeState = new EIdleState(this, prepareTime);
+        prepareToChargeState.onFinish += ChargeTarget;
+        prepareToChargeState.AnimatorEventName = "Prepare";
 
-        chargeState.onReachTarget += (Vector3 oldTarget) => ShakeGround();
-        chargeState.onFailToReachTarget += ShakeGround;
+        chargeState.damageTouch = new DamageTouch(chargeDamage, chargeCollider);
+        chargeState.onReachTarget += (Vector3 oldTarget) => HandleChargeReach();
+        chargeState.onFailToReachTarget += HandleChargeReach;
         chargeState.AnimatorEventName = "Jump";
 
         jumpAroundState.onReachTargetPrefab = stompPrefab;
         jumpAroundState.onFinish += GoIdle;
         jumpAroundState.AnimatorEventName = "Jump";
         jumpAroundState.animatorStompEventName = "Stomp";
-
-        shakeGroundState.onFinish += GoIdle;
 
         laserProjectileState.onFinish += GoIdle;
 
@@ -79,15 +102,24 @@ public class EnemyChargeAtPlayer : Enemy
 
     public void PrepareAttack()
     {
-        int random = UnityEngine.Random.Range(0, 2);
-        if (random == 0)
+        int random = UnityEngine.Random.Range(0, 3);
+        switch(random)
         {
-            LaserAttack();
+            default:
+                PrepareToCharge();
+                break;
+            case 1:
+                GoToHowlPosition();
+                break;
+            case 2:
+                LaserAttack();
+                break;
         }
-        else
-        {
-            JumpAround();
-        }
+    }
+
+    public void PrepareToCharge()
+    {
+        stateMachine.ChangeState(prepareToChargeState);
     }
 
     public void ChargeTarget()
@@ -95,8 +127,48 @@ public class EnemyChargeAtPlayer : Enemy
         Player player = GameMaster.Instance.Player;
         if (player != null)
         {
+            AudioMaster.Instance?.PlaySoundEffect(chargeAudio);
             chargeState.Target = player.transform.position;
             stateMachine.ChangeState(chargeState);
+        }
+    }
+
+    public void HandleChargeReach()
+    {
+
+        _attackWavesAmount++;
+        if (_attackWavesAmount < chargeWaveAmount)
+        {
+            ChargeTarget();
+        }
+        else
+        {
+            _attackWavesAmount = 0;
+            GoIdle();
+        }
+    }
+
+    public void GoToHowlPosition()
+    {
+        stateMachine.ChangeState(moveToHowlPositionState);
+    }
+
+    public void HowlAttack()
+    {
+        stateMachine.ChangeState(howlState);
+    }
+
+    public void HandleHowlEnd()
+    {
+        _attackWavesAmount++;
+        if (_attackWavesAmount < howlWaves)
+        {
+            HowlAttack();
+        }
+        else
+        {
+            _attackWavesAmount = 0;
+            GoIdle();
         }
     }
 
@@ -115,7 +187,7 @@ public class EnemyChargeAtPlayer : Enemy
             .ForEach((vector) => { availableIndex.Add(index); index++; });
 
         // We get at least one position thats threatning and remove it from the list
-        int cheatClosestIndex = GetPositionIndexClosestToPlayer();
+        int cheatClosestIndex = Utils.GetPositionIndexClosestToPlayer(jumpPositions);
         availableIndex.Remove(cheatClosestIndex);
 
         int jumpsAmount = 2; // Home many random jumps we want in addition to cheat jump
@@ -137,27 +209,8 @@ public class EnemyChargeAtPlayer : Enemy
         stateMachine.ChangeState(jumpAroundState);
     }
 
-    protected int GetPositionIndexClosestToPlayer()
+    public void HowlCameraEffect()
     {
-        Player player = GameMaster.Instance.Player;
-        Vector3 playerPos = player.transform.position;
-        int closestIndex = 0;
-        float closestDistance = Vector3.Distance(jumpPositions[closestIndex].position, playerPos);
-        for (int i = 1; i < jumpPositions.Count; i++)
-        {
-            float distance = Vector3.Distance(jumpPositions[i].position, playerPos);
-            if (distance < closestDistance)
-            {
-                closestIndex = i;
-                closestDistance = distance;
-            }
-        }
-        return closestIndex;
-    }
-
-    public void ShakeGround()
-    {
-        StageCamera.Instance.Shake(Vector2.up);
-        stateMachine.ChangeState(shakeGroundState);
+        StageCamera.Instance.Shake(Vector2.right);
     }
 }

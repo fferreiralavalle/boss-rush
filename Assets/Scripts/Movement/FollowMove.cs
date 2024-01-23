@@ -5,6 +5,7 @@ using UnityEngine;
 public class FollowMove : MonoBehaviour
 {
     public Transform target;
+    public Transform directionFlipper;
     public bool followPlayerInstead = false;
 
     protected MoveController moveController;
@@ -24,6 +25,11 @@ public class FollowMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (directionFlipper)
+        {
+            Vector3 direction = (target.position - directionFlipper.position).normalized;
+            directionFlipper.localScale = new Vector3((Mathf.Abs(directionFlipper.localScale.x) * (direction.x < 0 ? -1 : 1)), target.localScale.y, target.localScale.z);
+        }
         moveController.MoveTowards(target.position);
     }
 }

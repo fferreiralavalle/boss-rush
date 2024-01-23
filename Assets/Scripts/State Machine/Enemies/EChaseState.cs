@@ -14,10 +14,11 @@ public class EChaseState : EnemyState
     protected Transform _target;
     protected float _wantedDistance;
 
-    public EChaseState(Enemy enemy, float wantedDistance) : base(enemy)
+    public EChaseState(Enemy enemy, float wantedDistance, DamageTouch damageTouch) : base(enemy)
     {
         _wantedDistance = wantedDistance;
         animatorEventName = "Chase";
+        this.damageTouch = damageTouch;
     }
 
     public override void Enter()

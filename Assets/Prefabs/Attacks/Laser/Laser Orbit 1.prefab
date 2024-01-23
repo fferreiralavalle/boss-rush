@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 1527935546375802769}
   initialDegrees: -90
-  speed: 10
+  speed: 30
   distanceFromCenter: 1
 --- !u!1 &3811055807322767275
 GameObject:

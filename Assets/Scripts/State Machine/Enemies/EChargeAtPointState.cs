@@ -11,14 +11,16 @@ public class EChargeAtPointState : EnemyState
     public event OnFailToReachTarget onFailToReachTarget;
 
     public float timeToReachBeforeGiveup = 5f;
+    public float speedMultiplier = 1.25f;
 
     protected Vector3 _target;
     protected float _wantedDistance;
 
-    public EChargeAtPointState(Enemy enemy, float wantedDistance) : base(enemy)
+    public EChargeAtPointState(Enemy enemy, float wantedDistance, DamageTouch damageTouch) : base(enemy)
     {
         animatorEventName = "Charge";
         _wantedDistance = wantedDistance;
+        this.damageTouch = damageTouch;
     }
 
     public override void Enter()
@@ -43,7 +45,7 @@ public class EChargeAtPointState : EnemyState
             onFailToReachTarget?.Invoke();
             return;
         }
-        _enemy.moveController.MoveTowards(_target);
+        _enemy.moveController.MoveTowards(_target, _enemy.moveController.speed * speedMultiplier);
         UpdateAnimatorDirection(_enemy, _target - _enemy.transform.position);
         float distance = Vector2.Distance(_target, _enemy.transform.position);
         if (distance < _wantedDistance)

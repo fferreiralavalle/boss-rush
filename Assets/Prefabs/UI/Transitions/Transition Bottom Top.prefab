@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071d3b0427f35be4cb59d8ee5128db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
-  timeToCoverScreen: 0.5
+  duration: 3
+  timeToCoverScreen: 1
 --- !u!1 &6874662203577843322
 GameObject:
   m_ObjectHideFlags: 0

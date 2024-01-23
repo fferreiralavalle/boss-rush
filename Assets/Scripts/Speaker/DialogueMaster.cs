@@ -25,6 +25,18 @@ public class DialogueMaster : MonoBehaviour
         NextDialogue();
     }
 
+    public void InsertDialogue(List<DialogueData> dialogue)
+    {
+        if (dialogueData.Count == 0)
+        {
+            StartDialogue(dialogue);
+        }
+        else
+        {
+            dialogueData.InsertRange(dialogueIndex + 1, dialogue);
+        }
+    }
+
     public void NextDialogue()
     {
         dialogueIndex++;

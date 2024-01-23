@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ public class UIPlayerInfo : MonoBehaviour
     public AudioData loseHeartSound;
 
     public Image specialBar;
+    public Image star;
     public Color normalBarColor;
     public Color fullBarColor;
 
@@ -98,7 +100,7 @@ public class UIPlayerInfo : MonoBehaviour
             float maxSpecial = GameMaster.Instance.Player.specialBar.maxHealth;
             float currentSpecial = GameMaster.Instance.Player.specialBar.CurrentHealth;
             specialBar.fillAmount = currentSpecial / maxSpecial;
-            specialBar.color = specialBar.fillAmount == 1 ? fullBarColor : normalBarColor;
+            star.color = specialBar.fillAmount == 1 ? fullBarColor : normalBarColor;
         }
     }
 }

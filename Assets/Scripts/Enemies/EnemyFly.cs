@@ -57,6 +57,7 @@ public class EnemyFly : Enemy
 
         moveToProyectileFirePositionState = new EMoveToPosition(this, featherAttackPositions[0].position);
         throwProjectileState = new ELineProjectiles(this, featherProyectilePrefab, proyectileAmount, featherSpawnPosition, featherAttackDuration);
+        throwProjectileState.AnimatorEventName = "Attack";
 
         jumpAroundState = new EJumpAroundState(this, moveController.speed * 2f, 1f);
 
@@ -68,7 +69,7 @@ public class EnemyFly : Enemy
 
         jumpAroundState.onReachTargetPrefab = stompPrefab;
         jumpAroundState.onFinish += GoIdle;
-        jumpAroundState.AnimatorEventName = "Jump";
+        jumpAroundState.AnimatorEventName = "Move";
         jumpAroundState.animatorStompEventName = "Stomp";
 
         moveToProyectileFirePositionState.onFinish += FeatherAttack;
@@ -79,7 +80,7 @@ public class EnemyFly : Enemy
 
         reappearState.onAppearPrefab = stompFromSkyPrefab;
         reappearState.targetPreviewPrefab = previewStompPrefab;
-        reappearState.AnimatorEventName = "Air Attack";
+        reappearState.AnimatorEventName = "Fall";
         reappearState.onFinish += GoIdle;
         reappearState.onLand += ShakeScreen;
 
