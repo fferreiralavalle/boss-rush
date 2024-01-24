@@ -22,9 +22,12 @@ public class UIMenuAnimMoveIn : UIMenuAnim
 
     public override void CloseDialog(bool isTempt = false)
     {
-        base.CloseDialog(isTempt);
-        background.LeanAlpha(0, time);
-        box.LeanMoveLocal(GetStartingPosition(), time).setOnComplete(OnComplete).setEase(LeanTweenType.easeInOutQuad);
+        if (background.isActiveAndEnabled)
+        {
+            base.CloseDialog(isTempt);
+            background.LeanAlpha(0, time);
+            box.LeanMoveLocal(GetStartingPosition(), time).setOnComplete(OnComplete).setEase(LeanTweenType.easeInOutQuad);
+        }
     }
 
     public Vector3 GetStartingPosition()

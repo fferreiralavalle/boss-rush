@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d7d379d4c2f81f247ad8f7a359b686c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe6aeedb63782504a930fafed7f6f291, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -158,17 +158,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3033437437637103795}
-  appearSound:
-    audioClip: {fileID: 8300000, guid: ed62eb839ebc4d748b1c0cb60360379c, type: 3}
-    volumeMultiplier: 1
-    minPitch: 0.5
-    extraPitchRange: 0
-    delay: 0
-    loop: 1
-  hideSound:
-    audioClip: {fileID: 8300000, guid: ed62eb839ebc4d748b1c0cb60360379c, type: 3}
-    volumeMultiplier: 1
-    minPitch: 1
-    extraPitchRange: 0
-    delay: 0
-    loop: 1

@@ -78,7 +78,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -136,9 +136,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: onDestroySpawn
+      value: 
+      objectReference: {fileID: 497041409445469383, guid: a18f3156be510c8409b22ee6e307f6a7, type: 3}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68f6a5769158aad4b97bc3266004f985, type: 2}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: _targetTypes.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: m_Name
       value: Orbit Fire Projectile (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -169,9 +197,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1883850534741143290}
     m_Modifications:
+    - target: {fileID: 1054389408686086285, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -229,9 +261,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: onDestroySpawn
+      value: 
+      objectReference: {fileID: 497041409445469383, guid: a18f3156be510c8409b22ee6e307f6a7, type: 3}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68f6a5769158aad4b97bc3266004f985, type: 2}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: _targetTypes.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: m_Name
       value: Orbit Fire Projectile (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -262,9 +322,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1883850534741143290}
     m_Modifications:
+    - target: {fileID: 1054389408686086285, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -322,9 +386,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: onDestroySpawn
+      value: 
+      objectReference: {fileID: 497041409445469383, guid: a18f3156be510c8409b22ee6e307f6a7, type: 3}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68f6a5769158aad4b97bc3266004f985, type: 2}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: _targetTypes.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: m_Name
       value: Orbit Fire Projectile (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -357,7 +449,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -415,9 +507,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: onDestroySpawn
+      value: 
+      objectReference: {fileID: 497041409445469383, guid: a18f3156be510c8409b22ee6e307f6a7, type: 3}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68f6a5769158aad4b97bc3266004f985, type: 2}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: _targetTypes.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: m_Name
       value: Orbit Fire Projectile (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -450,7 +570,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -508,9 +628,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: onDestroySpawn
+      value: 
+      objectReference: {fileID: 497041409445469383, guid: a18f3156be510c8409b22ee6e307f6a7, type: 3}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68f6a5769158aad4b97bc3266004f985, type: 2}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: _targetTypes.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: m_Name
       value: Orbit Fire Projectile (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -543,7 +691,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: centerDistance
@@ -597,9 +745,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: onDestroySpawn
+      value: 
+      objectReference: {fileID: 497041409445469383, guid: a18f3156be510c8409b22ee6e307f6a7, type: 3}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68f6a5769158aad4b97bc3266004f985, type: 2}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: _targetTypes.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: m_Name
       value: Orbit Fire Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -630,9 +802,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1883850534741143290}
     m_Modifications:
+    - target: {fileID: 1054389408686086285, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -690,9 +866,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: onDestroySpawn
+      value: 
+      objectReference: {fileID: 497041409445469383, guid: a18f3156be510c8409b22ee6e307f6a7, type: 3}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68f6a5769158aad4b97bc3266004f985, type: 2}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: _targetTypes.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: m_Name
       value: Orbit Fire Projectile (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -723,9 +927,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1883850534741143290}
     m_Modifications:
+    - target: {fileID: 1054389408686086285, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -783,9 +991,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: onDestroySpawn
+      value: 
+      objectReference: {fileID: 497041409445469383, guid: a18f3156be510c8409b22ee6e307f6a7, type: 3}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 68f6a5769158aad4b97bc3266004f985, type: 2}
+    - target: {fileID: 5779848462308139493, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: _targetTypes.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: m_Name
       value: Orbit Fire Projectile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182640364725406320, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038632831345825244, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

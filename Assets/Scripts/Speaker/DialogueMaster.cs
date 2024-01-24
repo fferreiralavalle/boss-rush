@@ -52,6 +52,7 @@ public class DialogueMaster : MonoBehaviour
         {
             dialogueData = new List<DialogueData> { };
             GameMaster.Instance.Player.StopListening();
+            dialogueBox?.Close();
         }
     }
 

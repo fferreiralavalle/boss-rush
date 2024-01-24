@@ -63,9 +63,17 @@ public class EnemyFly : Enemy
 
         moveToAttackFromSkyPositionState = new EMoveToPosition(this, outOfScreenPosition.position);
         moveToAttackFromSkyPositionState.speedMultiplier = flyUpSpeedMultiplier;
+        moveToAttackFromSkyPositionState.AnimatorEventName = "Fly";
+        moveToAttackFromSkyPositionState.onFinish += FromSkyAttack;
+
         reappearState = new EBanishAndReappearState(this, Vector2.zero);
         reappearState.timeToReppear = timeToReaper;
         reappearState.speedMultiplier = flyUpSpeedMultiplier;
+        reappearState.onAppearPrefab = stompFromSkyPrefab;
+        reappearState.targetPreviewPrefab = previewStompPrefab;
+        reappearState.AnimatorEventName = "Fall";
+        reappearState.onFinish += GoIdle;
+        reappearState.onLand += ShakeScreen;
 
         jumpAroundState.onReachTargetPrefab = stompPrefab;
         jumpAroundState.onFinish += GoIdle;
@@ -75,14 +83,7 @@ public class EnemyFly : Enemy
         moveToProyectileFirePositionState.onFinish += FeatherAttack;
         throwProjectileState.onFinish += HandelFeatherAttackEnd;
 
-        moveToAttackFromSkyPositionState.onFinish += FromSkyAttack;
-        moveToAttackFromSkyPositionState.AnimatorEventName = "Move";
 
-        reappearState.onAppearPrefab = stompFromSkyPrefab;
-        reappearState.targetPreviewPrefab = previewStompPrefab;
-        reappearState.AnimatorEventName = "Fall";
-        reappearState.onFinish += GoIdle;
-        reappearState.onLand += ShakeScreen;
 
         idleState.onFinish += PrepareAttack;
 

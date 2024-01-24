@@ -44,7 +44,7 @@ public class ELineProjectiles : EnemyState
             projectile.transform.position = spawnPosition.position + positionDiff;
             if (projectile.GetComponent<LineMove>())
                 projectile.GetComponent<LineMove>().direction = direction;
-            projectile.transform.Rotate(0, 0, angle);
+            projectile.transform.Rotate(0, 0, angle * Mathf.Rad2Deg);
         }
     }
 

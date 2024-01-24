@@ -6,6 +6,7 @@ public class StageManager : MonoBehaviour
 {
     public static StageManager Instance;
 
+    public Stage initialStage;
     public StageInfo baseStage;
     public UITransition formBlackTransition;
 
@@ -14,7 +15,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        GoToBaseStage();
+        StartCoroutine(ChangeAfter(initialStage, 0f));
     }
 
     public void GoToBaseStage()

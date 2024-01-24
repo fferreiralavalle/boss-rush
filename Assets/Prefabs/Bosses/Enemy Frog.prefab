@@ -38,7 +38,7 @@ Transform:
   - {fileID: 7435155176295416424}
   - {fileID: 8675541971037276968}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4414381803815198920
 MonoBehaviour:
@@ -510,6 +510,18 @@ PrefabInstance:
     - target: {fileID: 7199358355027144757, guid: 96df44f239c1cb74593fa05e076dd906, type: 3}
       propertyPath: m_Color.a
       value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199358355027144757, guid: 96df44f239c1cb74593fa05e076dd906, type: 3}
+      propertyPath: m_Color.b
+      value: 0.101960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199358355027144757, guid: 96df44f239c1cb74593fa05e076dd906, type: 3}
+      propertyPath: m_Color.g
+      value: 0.101960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199358355027144757, guid: 96df44f239c1cb74593fa05e076dd906, type: 3}
+      propertyPath: m_Color.r
+      value: 0.101960786
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

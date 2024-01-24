@@ -19,6 +19,7 @@ public class StageInfo: ScriptableObject
 
     public void Complete()
     {
-        GameMaster.Instance.SetGameStateVariable(isCompleteStateVariable.Id, 1f);
+        if (isCompleteStateVariable)
+            GameMaster.Instance.SetGameStateVariable(isCompleteStateVariable.Id, 1f);
     }
 }
