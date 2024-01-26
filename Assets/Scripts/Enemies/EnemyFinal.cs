@@ -67,6 +67,7 @@ public class EnemyFinal : Enemy
         // Orbit Attack
         orbitProjectileState = new EOrbitProjectile(this, orbitAttackPrefab, orbitProjectileAmount, orbitSpawnPosition, orbitAttackDuration);
         moveToOrbitProyectilePositionState = new EMoveToPosition(this, skyPositions[0].position, 2f);
+        orbitProjectileState.AnimatorEventName = "Attack";
 
         orbitProjectileState.onFinish += HandleOrbitAttackEnd;
         moveToOrbitProyectilePositionState.onFinish += FireOrbitAttackWaves;

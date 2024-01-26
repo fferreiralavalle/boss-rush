@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1883850534741143290}
   - component: {fileID: 1836036016110173605}
   m_Layer: 0
-  m_Name: Player Orbit Fire
+  m_Name: Dark Fire Orbit Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

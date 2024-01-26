@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5208442962d11d5478f091be4bc64791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 6463579452736087560}
   dialoguesOnEncounter:
   - {fileID: 5862522671395101106}
 --- !u!114 &8551639092308911725
@@ -1745,10 +1744,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7355643727539988066, guid: 8effd2a1632978d4bb879f3cf1378d45, type: 3}
-      propertyPath: maxHealth
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1788,6 +1783,10 @@ PrefabInstance:
       value: Frog
       objectReference: {fileID: 0}
     - target: {fileID: 975287759247134928, guid: 08d408e7761b8484e8fee6e4e7fcba4c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2941127883833730813, guid: 08d408e7761b8484e8fee6e4e7fcba4c, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

@@ -541,6 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powers:
+  - {fileID: 11400000, guid: ac13688f33be7ec4dadfb55e14cee204, type: 2}
   - {fileID: 11400000, guid: df08dfffb2c50e346a46998a40b41cd2, type: 2}
   - {fileID: 11400000, guid: dab580fc06cd2b444b046dc0be4b7c66, type: 2}
 --- !u!1001 &4230680418706514423

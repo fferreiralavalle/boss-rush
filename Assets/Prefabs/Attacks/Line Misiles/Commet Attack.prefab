@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337b0d7b656f21e4d97f5ba924f30fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileToSpawn: {fileID: 1836036016110173605, guid: ab8afba9392ff2b439867b7bc1e4ddf2, type: 3}
+  projectileToSpawn: {fileID: 1836036016110173605, guid: 23857d2e4b3197442b2df72dc3452259, type: 3}
   inheritRotation: 0
 --- !u!1001 &7062625550202358098
 PrefabInstance:

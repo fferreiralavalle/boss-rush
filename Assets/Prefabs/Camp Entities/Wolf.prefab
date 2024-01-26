@@ -113,8 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powers:
   - {fileID: 11400000, guid: 26fd15a7190435542b2f9c87cd95bfe0, type: 2}
-  - {fileID: 11400000, guid: d6585e08b26f62242b4096ae8c65e37a, type: 2}
-  - {fileID: 11400000, guid: 7d2cf383967d48c48addc447752b3309, type: 2}
+  - {fileID: 11400000, guid: 5e5797d385010124796f838722c293c3, type: 2}
+  - {fileID: 11400000, guid: 2b42a932d75af4f4fb8137f4654f2f3e, type: 2}
 --- !u!1 &5009775426077486368
 GameObject:
   m_ObjectHideFlags: 0

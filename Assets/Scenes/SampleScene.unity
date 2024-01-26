@@ -189,7 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleStages:
-  - {fileID: 11400000, guid: 3ee5b0241158d3647b1093b5705bbd6b, type: 2}
+  - {fileID: 11400000, guid: 5fa4685ed202fd644b55a70a5d5bcf14, type: 2}
+  - {fileID: 11400000, guid: 31d72929759ed704eb0f8168537b795a, type: 2}
   finalStage: {fileID: 11400000, guid: 3ee5b0241158d3647b1093b5705bbd6b, type: 2}
 --- !u!1 &148829488
 GameObject:
@@ -2235,6 +2236,7 @@ MonoBehaviour:
   - {fileID: 6309449058571161633, guid: 742f3d3a023e69948aff31b5b0788d8f, type: 3}
   - {fileID: 5227208657064806317, guid: 7c5c5a0683620e54689851f1ac2a8549, type: 3}
   - {fileID: -1037463136200438404, guid: a8f561c282285064cb336d518c8f3e29, type: 3}
+  - {fileID: 6309449058571161633, guid: 76ee31ba709fec146913b22632892a01, type: 3}
   initiallyEquippedPowers: []
 --- !u!1 &916239451
 GameObject:
