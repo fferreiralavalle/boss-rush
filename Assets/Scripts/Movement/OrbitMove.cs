@@ -9,6 +9,7 @@ public class OrbitMove : MonoBehaviour
     public float centerDistanceSpeed = 1f;
     public float maxDistance = 10f;
     public Transform center;
+    public Vector3 offsetFromCenter = Vector3.zero;
 
     protected Vector3 originalPos = Vector3.zero;
 
@@ -19,7 +20,7 @@ public class OrbitMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 targetPos = center ? center.position : originalPos;
+        Vector3 targetPos = (center ? center.position : originalPos) + offsetFromCenter;
         initialAngle += angleSpeed * Time.fixedDeltaTime;
         centerDistance = Mathf.Min(centerDistance + centerDistanceSpeed * Time.fixedDeltaTime, maxDistance);
         Vector3 direction = new Vector2(Mathf.Cos(initialAngle * Mathf.Deg2Rad), Mathf.Sin(initialAngle * Mathf.Deg2Rad));

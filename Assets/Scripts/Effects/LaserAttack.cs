@@ -71,11 +71,11 @@ public class LaserAttack : Projectile
                     hitCreator = true;
                 }
             }
-            if (!hitCreator)
+            /*if (!hitCreator)
             {
                 Draw2DRay(laserFirePoint.position, _hit.point);
                 return;
-            }
+            }*/
         }
         Draw2DRay(laserFirePoint.position, laserFirePoint.position + direction * defDistanceRay);
     }

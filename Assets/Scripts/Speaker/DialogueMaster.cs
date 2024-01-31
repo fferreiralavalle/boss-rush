@@ -40,7 +40,7 @@ public class DialogueMaster : MonoBehaviour
     public void NextDialogue()
     {
         dialogueIndex++;
-        if (dialogueIndex >= 1 && dialogueIndex < dialogueData.Count)
+        if (dialogueIndex >= 1 && (dialogueIndex - 1) < dialogueData.Count)
         {
             dialogueData[dialogueIndex -1].OnExit();
         }
@@ -68,7 +68,10 @@ public class DialogueMaster : MonoBehaviour
 
     public void LoadDialogue(TextDialogueData dialogue)
     {
-        dialogueBox.gameObject.SetActive(true);
+        if (dialogueBox.gameObject.activeSelf)
+            dialogueBox.Open();
+        else
+            dialogueBox.gameObject.SetActive(true);
         dialogueBox.Load(dialogue);
     }
 

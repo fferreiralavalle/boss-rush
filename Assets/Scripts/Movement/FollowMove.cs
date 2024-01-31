@@ -7,6 +7,7 @@ public class FollowMove : MonoBehaviour
     public Transform target;
     public Transform directionFlipper;
     public bool followPlayerInstead = false;
+    public Vector3 followOffset;
 
     protected MoveController moveController;
 
@@ -27,9 +28,9 @@ public class FollowMove : MonoBehaviour
     {
         if (directionFlipper)
         {
-            Vector3 direction = (target.position - directionFlipper.position).normalized;
-            directionFlipper.localScale = new Vector3((Mathf.Abs(directionFlipper.localScale.x) * (direction.x < 0 ? -1 : 1)), target.localScale.y, target.localScale.z);
+            Vector3 direction = (target.position + followOffset - directionFlipper.position).normalized;
+            directionFlipper.localScale = new Vector3((Mathf.Abs(directionFlipper.localScale.x) * (direction.x < 0 ? -1 : 1)), directionFlipper.localScale.y, directionFlipper.localScale.z);
         }
-        moveController.MoveTowards(target.position);
+        moveController.MoveTowards(target.position + followOffset);
     }
 }

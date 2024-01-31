@@ -30,10 +30,18 @@ public class EnemyJump : Enemy
     public float timeToReaper = 1f;
     public float flyUpSpeedMultiplier = 1.5f;
     public Vector3 offSkyAttack = Vector3.up * 5;
+    public AudioData jumpSound;
 
     [Header("Jump Around")]
     public Projectile stompPrefab;
     public List<Transform> positions = new List<Transform>();
+
+    [Header("SPECIAL - Orbit Attack")]
+    public int specialProjectileAmount = 12;
+    public int specialWaveAmount = 6;
+    public float specialWaveDuration = 1f;
+    public Projectile specialProjectile;
+    public Transform specialAttackPosition;
 
     protected EIdleState idleState;
     protected EJumpAroundState jumpAroundState;
@@ -50,7 +58,11 @@ public class EnemyJump : Enemy
     protected EMoveToPosition moveToAttackFromSkyPositionState;
     protected EBanishAndReappearState reappearState;
 
-    protected int _currentWaves = 0;
+    // Special Attack States
+    protected EOrbitProjectile specialAttackState;
+    protected EMoveToPosition moveToSpecialPositionState;
+
+    protected int _wavesAmount = 0;
 
     public override void OnEnable()
     {
@@ -71,6 +83,7 @@ public class EnemyJump : Enemy
         // Orbit Attack
         orbitProjectileState = new EOrbitProjectile(this, orbitAttackPrefab, orbitProjectileAmount, orbitSpawnPosition, orbitAttackDuration);
         moveToOrbitProyectilePositionState = new EMoveToPosition(this, orbitAttackPositions[0].position, 2f);
+        moveToOrbitProyectilePositionState.AnimatorEventName = "Jump";
 
         orbitProjectileState.onFinish += HandleOrbitAttackEnd;
         moveToOrbitProyectilePositionState.onFinish += FireOrbitAttackWaves;
@@ -80,8 +93,10 @@ public class EnemyJump : Enemy
         throwProjectileState.degreesSpawnArc = 60;
         throwProjectileState.spawnDelay = 0;
         throwProjectileState.spawnDistanceFromCenter = 0.3f;
+        throwProjectileState.rotateToDirection = false;
+        moveToProyectileFirePositionState.AnimatorEventName = "Jump";
 
-        jumpAroundState = new EJumpAroundState(this, moveController.speed * 2f, 1f);
+        jumpAroundState = new EJumpAroundState(this, moveController.speed, 1f);
 
         moveToAttackFromSkyPositionState = new EMoveToPosition(this, outOfScreenPosition.position);
         moveToAttackFromSkyPositionState.speedMultiplier = flyUpSpeedMultiplier;
@@ -93,20 +108,28 @@ public class EnemyJump : Enemy
         jumpAroundState.onFinish += GoIdle;
         jumpAroundState.AnimatorEventName = "Jump";
         jumpAroundState.animatorStompEventName = "Stomp";
+        jumpAroundState.jumpSound = jumpSound;
 
         moveToProyectileFirePositionState.onFinish += VomitSwarm;
         throwProjectileState.onFinish += HandleVomitEnd;
 
         moveToAttackFromSkyPositionState.onFinish += FromSkyAttack;
-        moveToAttackFromSkyPositionState.AnimatorEventName = "Move";
+        moveToAttackFromSkyPositionState.AnimatorEventName = "Jump";
 
         reappearState.onAppearPrefab = stompFromSkyPrefab;
         reappearState.targetPreviewPrefab = previewStompPrefab;
-        reappearState.AnimatorEventName = "Air Attack";
+        reappearState.AnimatorEventName = "Fall";
         reappearState.onFinish += GoIdle;
         reappearState.onLand += ShakeScreen;
 
         idleState.onFinish += PrepareAttack;
+
+        // Special
+        specialAttackState = new EOrbitProjectile(this, specialProjectile, specialProjectileAmount, specialAttackPosition, specialWaveDuration);
+        moveToSpecialPositionState = new EMoveToPosition(this, specialAttackPosition.position, 2f);
+
+        moveToSpecialPositionState.onFinish += FireSpecialAttack;
+        specialAttackState.onFinish += SpecialAttackEnd;
 
         GoIdle();
         base.InitiateStates();
@@ -120,35 +143,70 @@ public class EnemyJump : Enemy
 
     public void PrepareAttack()
     {
+        if (IsInDangerHealth && !didSpecial)
+        {
+            AudioMaster.Instance.PlaySoundEffect(specialAttackSound);
+            MoveToSpecialAttackPosition();
+            didSpecial = true;
+            return;
+        }
         int random = Random.Range(0, 3);
         switch (random)
         {
             case 1:
-                MoveToSkyAttackPosition();
+                MoveToVomitPosition();
                 break;
             case 2:
                 MoveToOrbitAttackPosition();
                 break;
             default:
-                MoveToVomitPosition();
+                MoveToSkyAttackPosition();
                 break;
         }
     }
 
+    public void MoveToSpecialAttackPosition()
+    {
+        stateMachine.ChangeState(moveToSpecialPositionState);
+    }
+
+    public void FireSpecialAttack()
+    {
+        specialAttackState.maxDistanceMod = -1 * _wavesAmount;
+        stateMachine.ChangeState(specialAttackState);
+    }
+
+    public void SpecialAttackEnd()
+    {
+        _wavesAmount++;
+        if (_wavesAmount < specialWaveAmount)
+        {
+            FireSpecialAttack();
+        }
+        else
+        {
+            _wavesAmount = 0;
+            GoIdle();
+        }
+    }
+
+
     public void MoveToSkyAttackPosition()
     {
+        AudioMaster.Instance.PlaySoundEffect(jumpSound);
         stateMachine.ChangeState(moveToAttackFromSkyPositionState);
     }
 
     public void FromSkyAttack()
     {
         reappearState.target = GameMaster.Instance.Player.transform.position;
-        reappearState.timeToReppear = health.HealthPercentage < 0.5f ? timeToReaper * 0.5f : timeToReaper;
+        reappearState.timeToReppear = health.HealthPercentage < dangerHealth ? timeToReaper * 0.5f : timeToReaper;
         stateMachine.ChangeState(reappearState);
     }
 
     public void MoveToOrbitAttackPosition()
     {
+        AudioMaster.Instance.PlaySoundEffect(jumpSound);
         int farthestIndex = Utils.GetPositionIndexFarthestToPlayer(orbitAttackPositions);
         moveToOrbitProyectilePositionState.position = orbitAttackPositions[farthestIndex].position;
         stateMachine.ChangeState(moveToOrbitProyectilePositionState);
@@ -161,15 +219,15 @@ public class EnemyJump : Enemy
 
     public void HandleOrbitAttackEnd()
     {
-        _currentWaves++;
-        if (_currentWaves < orbitWaveAmount)
+        _wavesAmount++;
+        if (_wavesAmount < orbitWaveAmount)
         {
-            orbitProjectileState.maxDistanceMod = -1 * _currentWaves;
+            orbitProjectileState.maxDistanceMod = -1 * _wavesAmount;
             FireOrbitAttackWaves();
         }
         else
         {
-            _currentWaves = 0;
+            _wavesAmount = 0;
             orbitProjectileState.maxDistanceMod = 0f;
             JumpAround();
         }
@@ -177,6 +235,7 @@ public class EnemyJump : Enemy
 
     public void MoveToVomitPosition()
     {
+        AudioMaster.Instance.PlaySoundEffect(jumpSound);
         int index = GetPositionIndexFarthestToPlayer(vomitStagePositions);
         moveToProyectileFirePositionState.position = vomitStagePositions[index].position;
         stateMachine.ChangeState(moveToProyectileFirePositionState);
@@ -184,36 +243,24 @@ public class EnemyJump : Enemy
 
     public void VomitSwarm()
     {
-        throwProjectileState.spawnAmount = proyectileAmount + (health.HealthPercentage < 0.5f ? 1 : 0);
+        throwProjectileState.spawnAmount = proyectileAmount;
+        throwProjectileState.spawnDelay = vomitDuration * (IsInDangerHealth ? 0.75f : 0);
         stateMachine.ChangeState(throwProjectileState);
     }
 
     public void HandleVomitEnd()
     {
-        _currentWaves++;
-        if (_currentWaves >= vomitWaves)
+        _wavesAmount++;
+        int finalWaves = vomitWaves + (IsInDangerHealth ? 4 : 0);
+        if (_wavesAmount >= finalWaves)
         {
-            _currentWaves = 0;
+            _wavesAmount = 0;
             GoIdle();
         }
         else
         {
             VomitSwarm();
         }
-    }
-
-    public int GetFeatherAttackWavesAmount()
-    {
-        float healthPercentage = health.HealthPercentage;
-        if (healthPercentage < 0.25f)
-        {
-            return 3;
-        }
-        else if (healthPercentage < 0.5f)
-        {
-            return 3;
-        }
-        return 2;
     }
 
     public void JumpAround()
@@ -286,19 +333,15 @@ public class EnemyJump : Enemy
 
     public void ShakeScreen()
     {
-        StageCamera.Instance.Shake(Vector2.up);
+        StageCamera.Instance.Shake(Vector2.up * 1.5f);
     }
 
-    public void ShakeScreenLittle()
-    {
-        StageCamera.Instance.Shake(Vector2.up * 0.5f);
-    }
 
     public float TimeBetweenAttacks
     {
         get
         {
-            if (health.HealthPercentage < 0.5f)
+            if (IsInDangerHealth)
                 return timeBetweenAttacks * 0.5f;
             return timeBetweenAttacks;
         }

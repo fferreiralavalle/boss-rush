@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Profiling;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class EnemyFinal : Enemy
 {
@@ -32,6 +35,13 @@ public class EnemyFinal : Enemy
     public float laserAttackDuration = 3;
     public List<Transform> laserAttackPositions = new List<Transform>();
 
+    [Header("Special Attack")]
+    public float specialAttackDuration = 4f;
+    public VolumeProfile dangerVolume;
+    public Light2D turnOffLight;
+    public Light2D turnOnLight;
+    public AudioData finalMusic;
+
     protected EIdleState idleState;
 
     // Orbit Attack States
@@ -45,6 +55,9 @@ public class EnemyFinal : Enemy
     // Mega Laser State
     protected EMoveToPosition moveToLaserPosition;
     protected ELaserProjectileState laserProjectileState;
+
+    // Special Attack
+    protected EMoveToPosition moveToSpecialAttackPositionState;
 
     protected int orbitAttacksInARow = 0;
 
@@ -91,6 +104,10 @@ public class EnemyFinal : Enemy
 
         idleState.onFinish += PrepareAttack;
 
+        // Special Attack
+        moveToSpecialAttackPositionState = new EMoveToPosition(this, orbitAttackPositions[0].position);
+        moveToSpecialAttackPositionState.onFinish += AwaitSpecial;
+
         GoIdle();
         base.InitiateStates();
     }
@@ -103,6 +120,14 @@ public class EnemyFinal : Enemy
 
     public void PrepareAttack()
     {
+        if (IsInDangerHealth && !didSpecial)
+        {
+            didSpecial = true;
+            AudioMaster.Instance.PlayMusic(finalMusic);
+            AudioMaster.Instance.PlaySoundEffect(specialAttackSound);
+            MoveToSpecialAttackPosition();
+            return;
+        }
         int random = Random.Range(0, 3);
         switch (random)
         {
@@ -116,6 +141,21 @@ public class EnemyFinal : Enemy
                 MoveToCommetAttackPosition();
                 break;
         }
+    }
+
+    public void MoveToSpecialAttackPosition()
+    {
+        stateMachine.ChangeState(moveToSpecialAttackPositionState);
+    }
+
+    public void AwaitSpecial()
+    {
+        // Add mid battle cutscene
+        idleState.idleTime = specialAttackDuration;
+        Camera.main.GetComponent<Volume>().profile = dangerVolume;
+        turnOffLight.gameObject.SetActive(false);
+        turnOnLight.gameObject.SetActive(true);
+        stateMachine.ChangeState(idleState);
     }
 
     public void MoveToOrbitAttackPosition()
@@ -133,6 +173,7 @@ public class EnemyFinal : Enemy
     public void HandleOrbitAttackEnd()
     {
         orbitAttacksInARow++;
+        int orbitWaves = orbitWaveAmount + (IsInDangerHealth ? 1 : 0);
         if (orbitAttacksInARow < orbitWaveAmount)
         {
             orbitProjectileState.maxDistanceMod = -1 * orbitAttacksInARow;
@@ -162,7 +203,8 @@ public class EnemyFinal : Enemy
     {
         orbitAttacksInARow++;
         ShakeScreen();
-        if (orbitAttacksInARow < commetWavesAmount)
+        int wavesAmount = commetWavesAmount + (IsInDangerHealth ? 2 : 0);
+        if (orbitAttacksInARow < wavesAmount)
         {
             int index = Random.Range(0, commetFallPositions.Count);
             commetAttackState.targetPosition = commetFallPositions[index].position;
@@ -184,6 +226,7 @@ public class EnemyFinal : Enemy
 
     public void FireLaserAttac()
     {
+        laserProjectileState.spawnAmount = laserAmount + (IsInDangerHealth ? 2 : 0);
         stateMachine.ChangeState(laserProjectileState);
     }
 
@@ -196,7 +239,7 @@ public class EnemyFinal : Enemy
     {
         get
         {
-            if (health.HealthPercentage < 0.5f)
+            if (IsInDangerHealth)
                 return timeBetweenAttacks * 0.5f;
             return timeBetweenAttacks;
         }

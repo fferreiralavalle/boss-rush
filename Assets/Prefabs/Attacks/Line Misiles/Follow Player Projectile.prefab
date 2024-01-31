@@ -53,7 +53,7 @@ MonoBehaviour:
   canRehitSameEntity: 0
   _targetTypes: 01000000
   dontAutodestroy: 0
-  onDestroySpawn: {fileID: 497041409445469383, guid: a18f3156be510c8409b22ee6e307f6a7, type: 3}
+  onDestroySpawn: {fileID: 497041409445469383, guid: cd20f76326dc28d41afb8ad02931f83b, type: 3}
   onHitSpawn: {fileID: 0}
   damageMultiplier: 1
 --- !u!114 &6330422529525589836
@@ -123,6 +123,7 @@ MonoBehaviour:
   target: {fileID: 0}
   directionFlipper: {fileID: 1269031568722120262}
   followPlayerInstead: 1
+  followOffset: {x: 0, y: 0.25, z: 0}
 --- !u!1001 &4896173475474989116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,8 +183,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5722155176435090534, guid: d22c75e211b778f4eb496baee413e2cd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4281827695178487630}
   m_SourcePrefab: {fileID: 100100000, guid: d22c75e211b778f4eb496baee413e2cd, type: 3}
+--- !u!1 &908493495993623642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5722155176435090534, guid: d22c75e211b778f4eb496baee413e2cd, type: 3}
+  m_PrefabInstance: {fileID: 4896173475474989116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4281827695178487630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908493495993623642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfde72aeb16d42942a3c2227a6b226fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1269031568722120262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5939740661221699194, guid: d22c75e211b778f4eb496baee413e2cd, type: 3}

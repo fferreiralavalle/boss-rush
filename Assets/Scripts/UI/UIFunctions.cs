@@ -13,6 +13,7 @@ public class UIFunctions : MonoBehaviour
 
     public void ResetGame()
     {
+        TransitionMaster.Instance.ClearTransitions();
         GameMaster.Instance.ResetGameState();
         NextStageManager.Instance.GenerateNextStage();
         StageManager.Instance.GoToBaseStageFromBlack();

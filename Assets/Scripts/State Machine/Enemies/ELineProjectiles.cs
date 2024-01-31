@@ -9,8 +9,10 @@ public class ELineProjectiles : EnemyState
     public Transform spawnPosition;
     public float spawnDistanceFromCenter = 1f;
     public float degreesSpawnArc = 120f;
+    public float degreesOffset = 0f;
     public float spawnDelay = 0.1f;
     public float duration = 5f;
+    public bool rotateToDirection = true;
 
     protected Coroutine routine;
 
@@ -37,14 +39,16 @@ public class ELineProjectiles : EnemyState
         float degreesDiff = Mathf.Atan2(spawnDirection.y, spawnDirection.x);
         for (int i = 0; i < spawnAmount; i++)
         {
-            float angle = degreesDiff + (i * degreesPerProjectile - degreesSpawnArc / 2) * Mathf.Deg2Rad;
+            float angle = degreesOffset + degreesDiff + (i * degreesPerProjectile - degreesSpawnArc / 2) * Mathf.Deg2Rad;
             Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f);
             Vector3 positionDiff = direction * spawnDistanceFromCenter;
-            Projectile projectile = Object.Instantiate(spawnPrefab).Initiate(_enemy);
+            Projectile projectile = Object.Instantiate(spawnPrefab, spawnPosition).Initiate(_enemy);
+            projectile.transform.parent = null;
             projectile.transform.position = spawnPosition.position + positionDiff;
             if (projectile.GetComponent<LineMove>())
                 projectile.GetComponent<LineMove>().direction = direction;
-            projectile.transform.Rotate(0, 0, angle * Mathf.Rad2Deg);
+            if (rotateToDirection)
+                projectile.transform.Rotate(0, 0, angle * Mathf.Rad2Deg);
         }
     }
 

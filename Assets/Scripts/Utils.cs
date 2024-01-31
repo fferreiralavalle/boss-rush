@@ -39,4 +39,13 @@ public class Utils
         }
         return farthestIndex;
     }
+
+    public static void DeleteAllProjectiles()
+    {
+        Projectile[] projectiles = Object.FindObjectsOfType<Projectile>();
+        foreach(Projectile projectile in projectiles)
+        {
+            projectile.HandleRemove();
+        }
+    }
 }

@@ -39,7 +39,8 @@ public class EOrbitProjectile : EnemyState
         for (int i = 0; i < spawnAmount; i++)
         {
             float angle = degreesDiff + (i * degreesPerProjectile - degreesSpawnArc / 2);
-            Projectile projectile = Object.Instantiate(spawnPrefab).Initiate(_enemy);
+            Projectile projectile = Object.Instantiate(spawnPrefab, orbitPosition).Initiate(_enemy);
+            projectile.transform.parent = null;
             OrbitMove orbitMove = projectile.GetComponent<OrbitMove>();
             if (orbitMove)
             {

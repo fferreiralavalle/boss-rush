@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95738e89c906c4b4bbf997b93216f20a, type: 3}
-  m_Name: HornBossDefeated
+  m_Name: Tutorial Completed
   m_EditorClassIdentifier: 
-  id: HornBossDefeated
+  id: TutorialCompleted
   initialValue: 0

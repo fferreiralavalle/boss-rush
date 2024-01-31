@@ -24,10 +24,7 @@ public class UIGameOverMaster : MonoBehaviour
 
     public void Hide(float delay = 1f)
     {
-        if (closeCoroutine == null)
-        {
-            closeCoroutine = StartCoroutine(CloseAfter(delay));
-        }
+        gameOverScreen.CloseDialog(true);
     }
 
     protected IEnumerator CloseAfter(float delay = 0f)

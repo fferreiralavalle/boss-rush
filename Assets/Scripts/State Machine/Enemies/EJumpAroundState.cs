@@ -9,6 +9,7 @@ public class EJumpAroundState : EnemyState
     public float stayInTargetDuration = .2f;
     public Projectile onReachTargetPrefab;
     public int index = 0;
+    public AudioData jumpSound;
     public string animatorStompEventName = "JumpAround";
 
     protected bool jumping = true;
@@ -24,6 +25,7 @@ public class EJumpAroundState : EnemyState
     {
         jumping = true;
         index = 0;
+        AudioMaster.Instance.PlaySoundEffect(jumpSound);
         base.Enter();
     }
 
@@ -59,12 +61,12 @@ public class EJumpAroundState : EnemyState
             Projectile proyectile = Object.Instantiate(onReachTargetPrefab).Initiate(_enemy);
             proyectile.transform.position = _enemy.transform.position;
             _enemy.animator.SetBool(animatorStompEventName, true);
+            StageCamera.Instance.Shake(Vector2.up * 1f);
         }
         _timePassed += Time.fixedDeltaTime;
         // We a bit and then we jump again
         if (_timePassed > stayInTargetDuration)
         {
-            StageCamera.Instance.Shake(Vector2.up * 0.5f);
             _enemy.animator.SetBool(animatorStompEventName, false);
             jumping = true;
             _timePassed = 0;
@@ -72,6 +74,10 @@ public class EJumpAroundState : EnemyState
             if (index >= jumpTargets.Count)
             {
                 HandleFinish();
+            }
+            else
+            {
+                AudioMaster.Instance.PlaySoundEffect(jumpSound);
             }
         }
     }

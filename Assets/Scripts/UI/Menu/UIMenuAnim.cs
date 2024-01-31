@@ -12,6 +12,8 @@ public class UIMenuAnim : MonoBehaviour
 
     protected bool isCloseTemporary = false;
 
+    protected bool isClosed = true;
+
     private void OnEnable()
     {
         if (autoOpenOnEnable)
@@ -22,6 +24,7 @@ public class UIMenuAnim : MonoBehaviour
     {
         background.interactable = true;
         background.blocksRaycasts = true;
+        isClosed = false;
     }
 
     public virtual void CloseDialog(bool isTempt = false)
@@ -29,6 +32,7 @@ public class UIMenuAnim : MonoBehaviour
         isCloseTemporary = isTempt;
         background.interactable = false;
         background.blocksRaycasts = false;
+        isClosed = true;
     }
 
     public virtual void OnComplete()
@@ -37,9 +41,11 @@ public class UIMenuAnim : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (isCloseTemporary)
+        if (isCloseTemporary && isClosed)
         {
             gameObject.SetActive(false);
         }
     }
+
+    public bool IsClosed { get { return isClosed; } }
 }

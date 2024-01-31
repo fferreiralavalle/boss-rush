@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc579eaf011bed049bbf2a35f0435711, type: 3}
-  m_Name: Projectile Orbit Fly
+  m_Name: Special Orbit Fly
   m_EditorClassIdentifier: 
   damageSummary:
     damage: 1
@@ -20,7 +20,7 @@ MonoBehaviour:
   inmobileTime: 0.8
   spawnSound:
     audioClip: {fileID: 8300000, guid: 00104a27dc64669419a4ef4241c35efe, type: 3}
-    volumeMultiplier: 0.35
+    volumeMultiplier: 0.25
     minPitch: 0.8
     extraPitchRange: 0.2
     delay: 0

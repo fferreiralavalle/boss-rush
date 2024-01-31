@@ -19,9 +19,9 @@ MonoBehaviour:
   duration: 1
   inmobileTime: 0.8
   spawnSound:
-    audioClip: {fileID: 8300000, guid: 27c92d3febe5c8c40869ac3748efb706, type: 3}
+    audioClip: {fileID: 8300000, guid: ba71602b8315e5743a2e830f23673fe9, type: 3}
     volumeMultiplier: 1
-    minPitch: 1.3
-    extraPitchRange: 1.2
+    minPitch: 0.9
+    extraPitchRange: 1.1
     delay: 0
     loop: 1

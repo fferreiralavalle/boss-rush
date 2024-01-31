@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf7ed77c6be2c546af2991caddd878d, type: 3}
   m_Name: Final Stage
   m_EditorClassIdentifier: 
-  stage: {fileID: 1806835593426564260, guid: 67b6cf49aa58ae94db504c75f8e6a9ee, type: 3}
+  stage: {fileID: 400518787398785377, guid: 67b6cf49aa58ae94db504c75f8e6a9ee, type: 3}
   transition: {fileID: 7194958367509299532, guid: d7b887edc95f52e48a4daeb215f29ab7, type: 3}
   preview: {fileID: 0}
   isCompleteStateVariable: {fileID: 11400000, guid: 1b4d782d894a2ce42832841b63720540, type: 2}

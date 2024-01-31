@@ -15,6 +15,18 @@ public class SpawnProjectileOnSpecialUsePower : Power
     public void SpawnProjectile(Projectile projectileParent)
     {
         Projectile instance = Instantiate(projectile, _player.transform).Initiate(projectileParent.Creator);
+        if (instance is ProjectileGroup)
+        {
+            ProjectileGroup group = (ProjectileGroup)instance;
+            foreach(Projectile p in group.projectileChildren)
+            {
+
+                if (p.GetComponent<OrbitMove>() != null)
+                {
+                    p.GetComponent<OrbitMove>().center = _player.transform;
+                }
+            }
+        }
         if (instance.GetComponent<OrbitMove>() != null)
         {
             instance.GetComponent<OrbitMove>().center = _player.transform;

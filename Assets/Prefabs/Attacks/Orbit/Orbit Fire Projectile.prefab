@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1749438762584526077}
   - component: {fileID: 6073311251910269413}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 3204176729479849232}
   - component: {fileID: 3842361462475047257}
   - component: {fileID: 2102217890234346976}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Orbit Fire Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +153,7 @@ MonoBehaviour:
   centerDistanceSpeed: 1
   maxDistance: 4
   center: {fileID: 0}
+  offsetFromCenter: {x: 0, y: 0, z: 0}
 --- !u!114 &2102217890234346976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +189,14 @@ PrefabInstance:
     - target: {fileID: 902158727052102597, guid: 580a53a37fe378c47ac27b9ec2fb55cc, type: 3}
       propertyPath: m_Name
       value: Fire Animator
+      objectReference: {fileID: 0}
+    - target: {fileID: 902158727052102597, guid: 580a53a37fe378c47ac27b9ec2fb55cc, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772745122293409815, guid: 580a53a37fe378c47ac27b9ec2fb55cc, type: 3}
+      propertyPath: m_Layer
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6684744919573998770, guid: 580a53a37fe378c47ac27b9ec2fb55cc, type: 3}
       propertyPath: m_RootOrder

@@ -191,11 +191,13 @@ public class Player : Entity
 
     public void StartListening()
     {
+        print("listening");
         stateMachine.ChangeState(_listenState);
     }
 
     public void StopListening()
     {
+        print("back to idle");
         HandleIdle();
     }
 

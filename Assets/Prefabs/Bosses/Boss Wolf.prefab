@@ -210,6 +210,15 @@ MonoBehaviour:
   moveController: {fileID: 7139185045928589634}
   stateMachine: {fileID: 5189418334918323054}
   isNotBoss: 0
+  dangerHealth: 0.5
+  activateOnDanger: []
+  specialAttackSound:
+    audioClip: {fileID: 0}
+    volumeMultiplier: 1
+    minPitch: 1
+    extraPitchRange: 0
+    delay: 0
+    loop: 1
   timeBetweenAttacks: 1
   stompShakePower: {x: 0, y: 1}
   minJumpDistance: 5
@@ -239,7 +248,7 @@ MonoBehaviour:
     loop: 1
   chargeWaveAmount: 3
   stompPrefab: {fileID: 827418466799592345, guid: 18f0f1cc34fa372409050e764fe148a2, type: 3}
-  laserPrefab: {fileID: 1527935546375802769, guid: f5169d0ad2d91ff42b403e25d1f117b1, type: 3}
+  laserPrefab: {fileID: 8601262746540393355, guid: f5169d0ad2d91ff42b403e25d1f117b1, type: 3}
   laserAmount: 5
   laserAttackDuration: 5
   laserSpawnPosition: {fileID: 1113506871774624391}

@@ -13,6 +13,14 @@ public class TransitionMaster : MonoBehaviour
         Instance = this;
     }
 
+    public void ClearTransitions()
+    {
+        foreach(Transform t in transitionSpawn)
+        {
+            Destroy(t.gameObject);
+        }
+    }
+
     public void PlayTransition(UITransition transition)
     {
         Instantiate(transition, transitionSpawn);

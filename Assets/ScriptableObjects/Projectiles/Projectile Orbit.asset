@@ -18,3 +18,10 @@ MonoBehaviour:
     force: {x: 0, y: 0, z: 0}
   duration: 8
   inmobileTime: 0.8
+  spawnSound:
+    audioClip: {fileID: 8300000, guid: ba71602b8315e5743a2e830f23673fe9, type: 3}
+    volumeMultiplier: 0.9
+    minPitch: 0.7
+    extraPitchRange: 0.9
+    delay: 0
+    loop: 1

@@ -100,7 +100,7 @@ public class UIPlayerInfo : MonoBehaviour
             float maxSpecial = GameMaster.Instance.Player.specialBar.maxHealth;
             float currentSpecial = GameMaster.Instance.Player.specialBar.CurrentHealth;
             specialBar.fillAmount = currentSpecial / maxSpecial;
-            star.color = specialBar.fillAmount == 1 ? fullBarColor : normalBarColor;
+            star.gameObject.SetActive(specialBar.fillAmount == 1);
         }
     }
 }

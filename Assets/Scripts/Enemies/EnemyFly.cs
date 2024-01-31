@@ -21,10 +21,18 @@ public class EnemyFly : Enemy
     public float timeToReaper = 1f;
     public float flyUpSpeedMultiplier = 1.5f;
     public Vector3 offSkyAttack = Vector3.up * 5;
+    public AudioData flyUpSound;
 
     [Header("Jump Around")]
     public Projectile stompPrefab;
     public List<Transform> jumpPositions = new List<Transform>();
+
+    [Header("SPECIAL Projectile Attack")]
+    public int specialProjectileAmount = 12;
+    public float timeBetweenWaves = 0.5f;
+    public int specialAttackWaves = 3;
+    public float specialMaxDistance = 8f;
+    public Transform specialAttackPosition;
 
     protected EIdleState idleState;
     protected EJumpAroundState jumpAroundState;
@@ -37,7 +45,11 @@ public class EnemyFly : Enemy
     protected EMoveToPosition moveToAttackFromSkyPositionState;
     protected EBanishAndReappearState reappearState;
 
-    protected int featherAttacksInARow = 0;
+    // Special attack States
+    protected ELineProjectiles specialProjectileState;
+    protected EMoveToPosition moveToSpecialState;
+
+    protected int _wavesAmount = 0;
 
     public override void OnEnable()
     {
@@ -83,7 +95,14 @@ public class EnemyFly : Enemy
         moveToProyectileFirePositionState.onFinish += FeatherAttack;
         throwProjectileState.onFinish += HandelFeatherAttackEnd;
 
+        // Special
+        specialProjectileState = new ELineProjectiles(this, featherProyectilePrefab, specialProjectileAmount, featherSpawnPosition, timeBetweenWaves);
+        specialProjectileState.degreesSpawnArc = 150f;
+        moveToSpecialState = new EMoveToPosition(this, specialAttackPosition.position, 2f);
+        specialProjectileState.AnimatorEventName = "Attack";
 
+        moveToSpecialState.onFinish += FireSpecialAttack;
+        specialProjectileState.onFinish += SpecialAttackEnd;
 
         idleState.onFinish += PrepareAttack;
 
@@ -99,6 +118,12 @@ public class EnemyFly : Enemy
 
     public void PrepareAttack()
     {
+        if (IsInDangerHealth && !didSpecial)
+        {
+            AudioMaster.Instance.PlaySoundEffect(specialAttackSound);
+            MoveToSpecialAttackPosition();
+            return;
+        }
         int random = Random.Range(0, 3);
         switch (random)
         {
@@ -114,15 +139,42 @@ public class EnemyFly : Enemy
         }
     }
 
+    public void MoveToSpecialAttackPosition()
+    {
+        stateMachine.ChangeState(moveToSpecialState);
+    }
+
+    public void FireSpecialAttack()
+    {
+        specialProjectileState.degreesOffset = (_wavesAmount % 2 == 0 ) ? 0f : specialProjectileState.degreesSpawnArc / proyectileAmount;
+        didSpecial = true;
+        stateMachine.ChangeState(specialProjectileState);
+    }
+
+    public void SpecialAttackEnd()
+    {
+        _wavesAmount++;
+        if (_wavesAmount < specialAttackWaves)
+        {
+            MoveToSpecialAttackPosition();
+        }
+        else
+        {
+            _wavesAmount = 0;
+            GoIdle();
+        }
+    }
+
     public void MoveToSkyAttackPosition()
     {
+        AudioMaster.Instance.PlaySoundEffect(flyUpSound);
         stateMachine.ChangeState(moveToAttackFromSkyPositionState);
     }
 
     public void FromSkyAttack()
     {
         reappearState.target = GameMaster.Instance.Player.transform.position;
-        reappearState.timeToReppear = health.HealthPercentage < 0.5f ? timeToReaper * 0.5f : timeToReaper;
+        reappearState.timeToReppear = IsInDangerHealth ? timeToReaper * 0.75f : timeToReaper;
         stateMachine.ChangeState(reappearState);
     }
 
@@ -135,37 +187,33 @@ public class EnemyFly : Enemy
         positions.RemoveAt(0);
         int randomPositionIndex = Random.Range(0, positions.Count);
         moveToProyectileFirePositionState.position = positions[randomPositionIndex].position;
+        moveToProyectileFirePositionState.speedMultiplier = IsInDangerHealth ? 1.5f : 1f;
         stateMachine.ChangeState(moveToProyectileFirePositionState);
     }
 
     public void FeatherAttack()
     {
-        throwProjectileState.spawnAmount = proyectileAmount + featherAttacksInARow;
+        throwProjectileState.spawnAmount = proyectileAmount + _wavesAmount;
         stateMachine.ChangeState(throwProjectileState);
     }
 
     public void HandelFeatherAttackEnd()
     {
-        if (featherAttacksInARow < GetFeatherAttackWavesAmount())
+        if (_wavesAmount < GetFeatherAttackWavesAmount())
         {
-            featherAttacksInARow++;
+            _wavesAmount++;
             MoveToFeatherFirePosition();
         }
         else
         {
-            featherAttacksInARow = 0;
+            _wavesAmount = 0;
             GoIdle();
         }
     }
 
     public int GetFeatherAttackWavesAmount()
     {
-        float healthPercentage = health.HealthPercentage;
-        if (healthPercentage < 0.25f)
-        {
-            return 3;
-        }
-        else if (healthPercentage < 0.5f)
+        if (IsInDangerHealth)
         {
             return 3;
         }
@@ -231,8 +279,8 @@ public class EnemyFly : Enemy
     {
         get
         {
-            if (health.HealthPercentage < 0.5f)
-                return timeBetweenAttacks * 0.5f;
+            if (IsInDangerHealth)
+                return timeBetweenAttacks * 0.65f;
             return timeBetweenAttacks;
         }
     }

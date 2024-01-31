@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff1fc698f54f384c87b607e74cf418d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: 486d107ea7fe6184082807179ad900be, type: 2}
+  projectileData: {fileID: 11400000, guid: fb19adfd63dcf5b4f99d240cf7028a83, type: 2}
   canRehitSameEntity: 0
   _targetTypes: 
   dontAutodestroy: 0
@@ -78,7 +78,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -168,7 +168,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2102217890234346976, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -203,7 +204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -293,7 +294,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2102217890234346976, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -328,7 +330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -418,7 +420,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2102217890234346976, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -449,7 +452,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -539,7 +542,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2102217890234346976, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -570,7 +574,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -660,7 +664,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2102217890234346976, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -691,7 +696,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: centerDistance
@@ -773,7 +778,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2102217890234346976, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -808,7 +814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -898,7 +904,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2102217890234346976, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -933,7 +940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: maxDistance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3842361462475047257, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
       propertyPath: initialAngle
@@ -1023,7 +1030,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2102217890234346976, guid: 2ff89e41f6b2b994895aa73b3e82953c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

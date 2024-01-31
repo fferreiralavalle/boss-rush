@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2363947459411353746
+--- !u!1 &2610265521762244964
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1109348244074502609}
-  - component: {fileID: 1140173777574638619}
-  - component: {fileID: 1527935546375802769}
-  - component: {fileID: 3967857433733548262}
-  - component: {fileID: 7749047144217713020}
+  - component: {fileID: 6959839098672784158}
+  m_Layer: 0
+  m_Name: Fire Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6959839098672784158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610265521762244964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 740922337552841269}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8053567522122600945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740922337552841269}
+  - component: {fileID: 1444731508222474234}
+  - component: {fileID: 8601262746540393355}
+  - component: {fileID: 187575679962811408}
+  - component: {fileID: 6565519468975503271}
   m_Layer: 0
   m_Name: Laser Orbit 1
   m_TagString: Untagged
@@ -20,30 +51,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1109348244074502609
+--- !u!4 &740922337552841269
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363947459411353746}
+  m_GameObject: {fileID: 8053567522122600945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7016850849938457948}
+  - {fileID: 6959839098672784158}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!120 &1140173777574638619
+--- !u!120 &1444731508222474234
 LineRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363947459411353746}
+  m_GameObject: {fileID: 8053567522122600945}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,7 +114,7 @@ LineRenderer:
   - {x: 10, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.7
+    widthMultiplier: 0.9
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -158,13 +189,13 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &1527935546375802769
+--- !u!114 &8601262746540393355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363947459411353746}
+  m_GameObject: {fileID: 8053567522122600945}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df32ffaab4344904d93f81597937742a, type: 3}
@@ -177,75 +208,44 @@ MonoBehaviour:
   onDestroySpawn: {fileID: 0}
   onHitSpawn: {fileID: 0}
   damageMultiplier: 1
-  laserFirePoint: {fileID: 7016850849938457948}
-  lineRenderer: {fileID: 1140173777574638619}
+  laserFirePoint: {fileID: 6959839098672784158}
+  lineRenderer: {fileID: 1444731508222474234}
   direction: {x: 1, y: 0, z: 0}
   layersToHit:
   - Default
-  defDistanceRay: 10
+  defDistanceRay: 6
   warnWidth: 0.05
   warnTime: 0.5
   turnOffWidthDecreaseSpeed: 1
---- !u!114 &3967857433733548262
+--- !u!114 &187575679962811408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363947459411353746}
+  m_GameObject: {fileID: 8053567522122600945}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f86b93a443325f740908b7d61a856955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 1527935546375802769}
+  attack: {fileID: 8601262746540393355}
   target: {fileID: 0}
   followPlayerInstead: 1
   speed: 0.5
---- !u!114 &7749047144217713020
+--- !u!114 &6565519468975503271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363947459411353746}
+  m_GameObject: {fileID: 8053567522122600945}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9728ce417180846429c244025da3bf9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 1527935546375802769}
+  attack: {fileID: 8601262746540393355}
   initialDegrees: -90
   speed: 30
-  distanceFromCenter: 1
---- !u!1 &3811055807322767275
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7016850849938457948}
-  m_Layer: 0
-  m_Name: Fire Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7016850849938457948
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3811055807322767275}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1109348244074502609}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  distanceFromCenter: 0.5
