@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: DamageUpPower
   powerName: Feral
-  description: Increases basic attack damage by 30%.
+  description: Increases basic attack damage by 25%.
   icon: {fileID: 0}
   healthCost: 1

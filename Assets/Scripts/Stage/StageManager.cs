@@ -45,6 +45,7 @@ public class StageManager : MonoBehaviour
         currentStage = Instantiate(stage, transform);
         GameMaster.Instance.SpawnPlayer(currentStage.playerSpawn.position);
         AudioMaster.Instance.PlayMusic(stage.onEnterAudio);
+        GameMaster.Instance.Player.specialBar.Damage(new DamageSummary(99999));
         if (currentStage.showPlayerGUI)
         {
             UIPlayerInfo.Instance.Show();

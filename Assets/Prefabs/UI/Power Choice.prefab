@@ -101,7 +101,7 @@ MonoBehaviour:
   powerDescription: {fileID: 6646955008530708693}
   cost: {fileID: 7734956910875170705}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 0.2901961, g: 0.7725491, b: 0.4431373, a: 1}
+  selectedColor: {r: 0.59607846, g: 0.8980392, b: 0.7058824, a: 1}
 --- !u!114 &1269083056909434669
 MonoBehaviour:
   m_ObjectHideFlags: 0

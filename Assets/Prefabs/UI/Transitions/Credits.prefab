@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 100000000
-  timeToCoverScreen: 1.5
+  timeToCoverScreen: 120
 --- !u!1 &1685967222584341236
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typewriterStartsAutomatically: 0
+  typewriterStartsAutomatically: 1
   animationLoop: 0
   timeScale: 0
   _text: 

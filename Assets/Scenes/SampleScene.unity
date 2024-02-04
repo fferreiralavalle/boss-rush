@@ -190,10 +190,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.764151, g: 0.2775454, b: 0.2775454, a: 1}
-    m_HighlightedColor: {r: 0.7058824, g: 0.16470589, b: 0.16470589, a: 1}
-    m_PressedColor: {r: 0.7058824, g: 0.16470589, b: 0.16470589, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6886792, g: 0.40526658, b: 0.3930669, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -571,8 +571,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282861507
-  m_fontColor: {r: 0.7647059, g: 0.2784314, b: 0.2784314, a: 1}
+    rgba: 4284770224
+  m_fontColor: {r: 0.6901961, g: 0.40392157, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2293,7 +2293,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   waitForNormalChars: 0.03
-  waitLong: 0.6
+  waitLong: 0.35
   waitMiddle: 0.2
   avoidMultiplePunctuactionWait: 0
   waitForNewLines: 1
@@ -2747,6 +2747,8 @@ MonoBehaviour:
   - {fileID: 5227208657064806317, guid: 7c5c5a0683620e54689851f1ac2a8549, type: 3}
   - {fileID: -1037463136200438404, guid: a8f561c282285064cb336d518c8f3e29, type: 3}
   - {fileID: 957787302130626990, guid: 76ee31ba709fec146913b22632892a01, type: 3}
+  - {fileID: 5344957284864527248, guid: 60b8c41cfd6d2884fb6cb081d5561a34, type: 3}
+  - {fileID: 7532587728258848657, guid: 69d35101b4ccb0f4d8337fdcbf44b922, type: 3}
   initiallyEquippedPowers: []
 --- !u!1 &916239451
 GameObject:
@@ -5056,8 +5058,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.57254905, g: 0.98039216, b: 0.46666667, a: 1}
-    m_PressedColor: {r: 0.2901961, g: 0.7725491, b: 0.4431373, a: 1}
+    m_HighlightedColor: {r: 0.5960751, g: 0.8962264, b: 0.70574576, a: 1}
+    m_PressedColor: {r: 0.59607846, g: 0.8980392, b: 0.7058824, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -5712,6 +5714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2140372139}
   - component: {fileID: 2140372140}
+  - component: {fileID: 2140372141}
   m_Layer: 0
   m_Name: Game Master
   m_TagString: Untagged
@@ -5755,6 +5758,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 03a5fa1496d18504780744aa658decec, type: 2}
   - {fileID: 11400000, guid: c1c957ee01cd14d428269f78526361ae, type: 2}
   - {fileID: 11400000, guid: 6cfaac76fad09b3458d8928fd10bf2aa, type: 2}
+  - {fileID: 11400000, guid: 00855812abcf9164b91f67d967e2b9bf, type: 2}
+  - {fileID: 11400000, guid: 03cd3825fdcfdee4c86e0262abe693af, type: 2}
+  - {fileID: 11400000, guid: ebe73259f730cc349941e16143de6503, type: 2}
+--- !u!114 &2140372141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140372138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaecf7fd832814644b1c5622b8e99a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveToTime: {fileID: 11400000, guid: 00855812abcf9164b91f67d967e2b9bf, type: 2}
 --- !u!1001 &2976001939759775947
 PrefabInstance:
   m_ObjectHideFlags: 0

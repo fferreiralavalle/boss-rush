@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public delegate void OnProjectileSpawn(Projectile projectile);
+public delegate void OnDashPower(PDashState state, Player player);
 
 public class Player : Entity
 {
@@ -38,6 +39,7 @@ public class Player : Entity
     protected float _timePassedFromDash = 0f;
 
     public Action onDashEnd;
+    public OnDashPower onWillDash;
 
     private void Awake()
     {
@@ -114,7 +116,7 @@ public class Player : Entity
     {
         _idleState = new PIdleState(this);
         _moveState = new PMoveState(this);
-        _dashState = new PDashState(this);
+        _dashState = new PDashState(this, dashDistance, dashDuration, dashInvulnerability);
         _mainAttackState = new PMainAttack(this);
         _listenState = new PListening(this);
         _specialAttackState = new PSpecialAttack(this);
@@ -154,6 +156,10 @@ public class Player : Entity
         if (_timePassedFromDash >= dashCooldown)
         {
             AudioMaster.Instance.PlaySoundEffect(dashSound);
+            _dashState.invulnerabilityTime = dashInvulnerability;
+            _dashState.distance = dashDistance;
+            _dashState.duration = dashDuration;
+            onWillDash?.Invoke(_dashState, this);
             stateMachine.ChangeState(_dashState);
         }
     }

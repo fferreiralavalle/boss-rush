@@ -17,6 +17,7 @@ public class EMoveToPosition : EnemyState
     public override void OnFixedUpdate()
     {
         _enemy.moveController.MoveTowards(position, _enemy.moveController.speed * speedMultiplier);
+        UpdateAnimatorDirection(_enemy, position - _enemy.transform.position);
         base.OnFixedUpdate();
         if (Vector3.Distance(_enemy.transform.position, position) == 0 )
         {

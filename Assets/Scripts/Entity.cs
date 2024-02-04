@@ -16,16 +16,16 @@ public class Entity : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        stateMachine.CurrentState.OnFixedUpdate();
+        stateMachine?.CurrentState?.OnFixedUpdate();
     }
 
     protected virtual void Update()
     {
-        stateMachine.CurrentState.OnUpdate();
+        stateMachine?.CurrentState?.OnUpdate();
     }
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        stateMachine.CurrentState.OnTriggerEnter2D(collision);
+        stateMachine?.CurrentState?.OnTriggerEnter2D(collision);
     }
 }

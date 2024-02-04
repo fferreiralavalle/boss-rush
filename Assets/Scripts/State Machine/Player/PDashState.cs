@@ -9,9 +9,16 @@ public class PDashState : PState
 
     protected Vector2 _initialPosition = Vector2.zero;
 
-    public PDashState(Player player) : base(player)
+    public float distance;
+    public float invulnerabilityTime = 0.3f;
+    public float duration = 0.3f;
+
+    public PDashState(Player player, float distance, float duration, float invulnerabilityTime) : base(player)
     {
         animatorEventName = "Dash";
+        this.distance = distance;
+        this.invulnerabilityTime = invulnerabilityTime;
+        this.duration = duration;
     }
 
     public override void Enter()
@@ -19,7 +26,7 @@ public class PDashState : PState
         base.Enter();
         _initialPosition = _player.transform.position;
         _direction = _player.moveAction.ReadValue<Vector2>();
-        _player.health.InvulnerableTime = _player.dashInvulnerability;
+        _player.health.InvulnerableTime = invulnerabilityTime;
     }
 
     public override void Leave()
@@ -29,14 +36,14 @@ public class PDashState : PState
 
     public override void OnFixedUpdate()
     {
-        Vector2 target = _initialPosition + _direction.normalized * _player.dashDistance;
+        Vector2 target = _initialPosition + _direction.normalized * distance;
         _player.moveController.MoveTowards(
             target,
-            _player.moveController.Speed / _player.dashDuration
+            distance / _player.dashDuration
         );
         base.OnFixedUpdate();
         _timePassed += Time.fixedDeltaTime;
-        if (_timePassed > _player.dashDuration || Vector2.Distance(_player.transform.position, target) == 0)
+        if (_timePassed > duration || Vector2.Distance(_player.transform.position, target) == 0)
         {
             HandleFinish();
         }

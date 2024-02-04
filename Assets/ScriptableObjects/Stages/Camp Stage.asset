@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf7ed77c6be2c546af2991caddd878d, type: 3}
   m_Name: Camp Stage
   m_EditorClassIdentifier: 
-  stage: {fileID: 6768134139088369209, guid: cc5de098a93d70b4ea0eaa2d54c40bda, type: 3}
+  stage: {fileID: 3429563552446103174, guid: cc5de098a93d70b4ea0eaa2d54c40bda, type: 3}
   transition: {fileID: 7194958367509299532, guid: d7b887edc95f52e48a4daeb215f29ab7, type: 3}
   preview: {fileID: 0}
   isCompleteStateVariable: {fileID: 11400000, guid: 954be31375cc1834ca757ba67fe99b32, type: 2}

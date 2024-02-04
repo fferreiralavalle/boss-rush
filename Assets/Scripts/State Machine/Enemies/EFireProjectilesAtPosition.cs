@@ -13,6 +13,7 @@ public class EFireProjectilesAtPosition : EnemyState
     public float initialDegrees = 0f;
     public float spawnDelay = 0.1f;
     public float duration = 5f;
+    public bool rotateToLookAtTarget = true;
 
     protected Coroutine routine;
     protected GameObject warningInstance;
@@ -48,7 +49,8 @@ public class EFireProjectilesAtPosition : EnemyState
             projectile.transform.position = targetPosition + positionDiff;
             if (projectile.GetComponent<LineMove>())
                 projectile.GetComponent<LineMove>().direction = direction * -1;
-            projectile.transform.Rotate(0, 0, angleDegrees + 180f); // All projectiles point right
+            if (rotateToLookAtTarget)
+                projectile.transform.Rotate(0, 0, angleDegrees + 180f); // All projectiles point right
         }
     }
 

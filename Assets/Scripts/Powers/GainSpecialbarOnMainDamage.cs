@@ -11,6 +11,12 @@ public class GainSpecialbarOnMainDamage : Power
         player.playerWeapons.onPrimaryWeaponSpawn += AttatchGainOnEnd;
     }
 
+    public override void HandleRemove()
+    {
+        _player.playerWeapons.onPrimaryWeaponSpawn -= AttatchGainOnEnd;
+        base.HandleRemove();
+    }
+
     public void AttatchGainOnEnd(Projectile projectile)
     {
         projectile.onDealDamage += (DamageSummary sum, float healthleft) => GainExtraEnergy();

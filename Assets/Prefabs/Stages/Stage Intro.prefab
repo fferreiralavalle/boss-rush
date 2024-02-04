@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 1563904655824671501}
   - component: {fileID: 5572597713047295071}
   m_Layer: 0
-  m_Name: Text (7)
+  m_Name: Go to Stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e96e0f812be2a6409edc77ebc7fe996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: {fileID: 6768134139088369209, guid: cc5de098a93d70b4ea0eaa2d54c40bda, type: 3}
+  stage: {fileID: 3429563552446103174, guid: cc5de098a93d70b4ea0eaa2d54c40bda, type: 3}
   transition: {fileID: 7194958367509299532, guid: d8080d22730a48e459fad8a067ce4cc1, type: 3}
 --- !u!1 &2826308142578005780
 GameObject:

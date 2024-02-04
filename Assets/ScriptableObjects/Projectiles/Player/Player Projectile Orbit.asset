@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Player Projectile Orbit
   m_EditorClassIdentifier: 
   damageSummary:
-    damage: 5
+    damage: 3
     damageType: 0
     force: {x: 0, y: 0, z: 0}
-  duration: 6
+  duration: 5
   inmobileTime: 0.8
   spawnSound:
     audioClip: {fileID: 0}

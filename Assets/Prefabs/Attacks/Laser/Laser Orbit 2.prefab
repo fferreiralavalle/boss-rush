@@ -248,4 +248,4 @@ MonoBehaviour:
   attack: {fileID: 1737942328714115277}
   initialDegrees: -90
   speed: 20
-  distanceFromCenter: 1
+  distanceFromCenter: 0.75

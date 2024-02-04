@@ -13,7 +13,8 @@ public class TextDialogueSetActive : DialogueData
         base.OnEnter();
         foreach(GameObject go in gameObjects)
         {
-            go.SetActive(setActiveStateTo);
+            if (go)
+                go.SetActive(setActiveStateTo);
         }
         DialogueMaster.Instance.NextDialogue();
     }

@@ -12,6 +12,12 @@ public class SpawnProjectileOnSpecialUsePower : Power
         player.playerWeapons.onSpecialSpawn += SpawnProjectile;
     }
 
+    public override void HandleRemove()
+    {
+        _player.playerWeapons.onSpecialSpawn -= SpawnProjectile;
+        base.HandleRemove();
+    }
+
     public void SpawnProjectile(Projectile projectileParent)
     {
         Projectile instance = Instantiate(projectile, _player.transform).Initiate(projectileParent.Creator);

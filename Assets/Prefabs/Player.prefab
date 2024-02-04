@@ -163,9 +163,9 @@ MonoBehaviour:
   specialChargeGainedPerHealthLost: 1
   invulnerabilityAfterHit: 1
   dashInvulnerability: 0.3
-  dashDistance: 2
-  dashDuration: 0.25
-  dashCooldown: 0.35
+  dashDistance: 2.5
+  dashDuration: 0.17
+  dashCooldown: 0.45
   dashSound:
     audioClip: {fileID: 8300000, guid: 10c7b2df68d0a9945846e2aa3823ec2f, type: 3}
     volumeMultiplier: 1

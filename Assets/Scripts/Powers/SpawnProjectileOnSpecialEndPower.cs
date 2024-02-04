@@ -12,6 +12,12 @@ public class SpawnProjectileOnSpecialEndPower : Power
         player.playerWeapons.onSpecialSpawn += AtatchSpawnOnEnd;
     }
 
+    public override void HandleRemove()
+    {
+        _player.playerWeapons.onSpecialSpawn -= AtatchSpawnOnEnd;
+        base.HandleRemove();
+    }
+
     public void AtatchSpawnOnEnd(Projectile projectile)
     {
         projectile.onDealDamage += (DamageSummary sum, float healthleft) => SpawnProjectile(projectile);

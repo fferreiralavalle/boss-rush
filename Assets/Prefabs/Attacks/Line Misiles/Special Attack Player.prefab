@@ -361,8 +361,8 @@ MonoBehaviour:
   canRehitSameEntity: 0
   _targetTypes: 00000000
   dontAutodestroy: 0
-  onDestroySpawn: {fileID: 0}
-  onHitSpawn: {fileID: 0}
+  onDestroySpawn: {fileID: 497041409445469383, guid: df63bbf86a52b434bbf0b833897ea066, type: 3}
+  onHitSpawn: {fileID: 497041409445469383, guid: df63bbf86a52b434bbf0b833897ea066, type: 3}
   damageMultiplier: 1
 --- !u!114 &6330422529525589836
 MonoBehaviour:

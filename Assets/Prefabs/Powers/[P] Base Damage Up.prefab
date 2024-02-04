@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerData: {fileID: 11400000, guid: 5e5797d385010124796f838722c293c3, type: 2}
-  damageMultiplier: 1.3
+  damageMultiplier: 1.25

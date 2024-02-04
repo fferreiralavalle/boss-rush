@@ -12,6 +12,12 @@ public class SpecialDamageUpPower : Power
         player.playerWeapons.onSpecialSpawn += HandleSpecialSpawn;
     }
 
+    public override void HandleRemove()
+    {
+        _player.playerWeapons.onSpecialSpawn -= HandleSpecialSpawn;
+        base.HandleRemove();
+    }
+
     public void HandleSpecialSpawn(Projectile special)
     {
         special.damageMultiplier *= damageMultiplier;

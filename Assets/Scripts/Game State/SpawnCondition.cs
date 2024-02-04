@@ -5,9 +5,9 @@ using UnityEngine;
 [Serializable]
 public class SpawnCondition
 {
-    public float value;
-    public SpawnCheckEnum condition;
     public GameStateVariableDataNumber variable;
+    public SpawnCheckEnum condition;
+    public float value;
 
     public bool MeetsCondition()
     {
@@ -19,9 +19,9 @@ public class SpawnCondition
             case SpawnCheckEnum.NotEquals:
                 return value != currentValue;
             case SpawnCheckEnum.LessOrEqual:
-                return value <= currentValue;
+                return currentValue <= value;
             case SpawnCheckEnum.GreaterOrEqual:
-                return value >= currentValue;
+                return currentValue >= value;
         }
     }
 }

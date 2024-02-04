@@ -7,19 +7,8 @@ public class Utils
     public static int GetPositionIndexClosestToPlayer(List<Transform> position)
     {
         Player player = GameMaster.Instance.Player;
-        Vector3 playerPos = player.transform.position;
-        int closestIndex = 0;
-        float closestDistance = Vector3.Distance(position[closestIndex].position, playerPos);
-        for (int i = 1; i < position.Count; i++)
-        {
-            float distance = Vector3.Distance(position[i].position, playerPos);
-            if (distance < closestDistance)
-            {
-                closestIndex = i;
-                closestDistance = distance;
-            }
-        }
-        return closestIndex;
+        Transform pos = GetPositionClosestToTransform(position, player.transform);
+        return position.IndexOf(pos);
     }
 
     public static int GetPositionIndexFarthestToPlayer(List<Transform> position)
@@ -38,6 +27,24 @@ public class Utils
             }
         }
         return farthestIndex;
+    }
+
+    public static Transform GetPositionClosestToTransform(List<Transform> positions, Transform target)
+    {
+        Vector3 targetPos = target.position;
+        Transform closestPos = positions[0];
+        float closest = Vector3.Distance(closestPos.position, targetPos);
+        for (int i = 1; i < positions.Count; i++)
+        {
+            float distance = Vector3.Distance(positions[i].position, targetPos);
+            if (distance < closest)
+            {
+                closestPos = positions[i];
+                closest = distance;
+            }
+        }
+        return closestPos;
+
     }
 
     public static void DeleteAllProjectiles()

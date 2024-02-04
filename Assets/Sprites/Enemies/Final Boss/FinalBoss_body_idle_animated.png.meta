@@ -114,9 +114,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 819
-        width: 565
-        height: 819
+        y: 0
+        width: 545
+        height: 799
       alignment: 9
       pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: FinalBoss_body_idle_animated_1
       rect:
         serializedVersion: 2
-        x: 565
-        y: 819
-        width: 565
-        height: 819
+        x: 545
+        y: 0
+        width: 545
+        height: 799
       alignment: 9
       pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: FinalBoss_body_idle_animated_2
       rect:
         serializedVersion: 2
-        x: 1130
-        y: 819
-        width: 565
-        height: 819
+        x: 1090
+        y: 0
+        width: 545
+        height: 799
       alignment: 9
       pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: FinalBoss_body_idle_animated_3
       rect:
         serializedVersion: 2
-        x: 1695
-        y: 819
-        width: 565
-        height: 819
+        x: 1635
+        y: 0
+        width: 545
+        height: 799
       alignment: 9
       pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: FinalBoss_body_idle_animated_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2180
         y: 0
-        width: 565
-        height: 819
+        width: 545
+        height: 799
       alignment: 9
       pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: FinalBoss_body_idle_animated_5
       rect:
         serializedVersion: 2
-        x: 565
+        x: 2725
         y: 0
-        width: 565
-        height: 819
+        width: 545
+        height: 799
       alignment: 9
       pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: FinalBoss_body_idle_animated_6
       rect:
         serializedVersion: 2
-        x: 1130
+        x: 3270
         y: 0
-        width: 565
-        height: 819
+        width: 545
+        height: 799
       alignment: 9
       pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -82,7 +82,8 @@ public class EnemyJump : Enemy
 
         // Orbit Attack
         orbitProjectileState = new EOrbitProjectile(this, orbitAttackPrefab, orbitProjectileAmount, orbitSpawnPosition, orbitAttackDuration);
-        moveToOrbitProyectilePositionState = new EMoveToPosition(this, orbitAttackPositions[0].position, 2f);
+        orbitProjectileState.AnimatorEventName = "Idle";
+        moveToOrbitProyectilePositionState = new EMoveToPosition(this, orbitAttackPositions[0].position, 2.5f);
         moveToOrbitProyectilePositionState.AnimatorEventName = "Jump";
 
         orbitProjectileState.onFinish += HandleOrbitAttackEnd;
@@ -94,6 +95,7 @@ public class EnemyJump : Enemy
         throwProjectileState.spawnDelay = 0;
         throwProjectileState.spawnDistanceFromCenter = 0.3f;
         throwProjectileState.rotateToDirection = false;
+        throwProjectileState.AnimatorEventName = "Idle";
         moveToProyectileFirePositionState.AnimatorEventName = "Jump";
 
         jumpAroundState = new EJumpAroundState(this, moveController.speed, 1f);

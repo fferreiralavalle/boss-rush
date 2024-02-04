@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerData: {fileID: 11400000, guid: 2b42a932d75af4f4fb8137f4654f2f3e, type: 2}
-  gainMultiplier: 1.25
+  gainMultiplier: 1.5

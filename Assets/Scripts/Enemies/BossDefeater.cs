@@ -19,8 +19,9 @@ public class BossDefeater : MonoBehaviour
 
     public void HandleDefeat()
     {
+        Utils.DeleteAllProjectiles();
         Time.timeScale = slowTimeAmount;
-        GameMaster.Instance.Player.health.InvulnerableTime = 7;
+        GameMaster.Instance.Player.health.InvulnerableTime = 8;
         AudioMaster.Instance.PlayMusic(onDefeatMusic);
         StartCoroutine(HandleDefeatRoutine());
     }

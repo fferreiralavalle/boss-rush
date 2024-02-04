@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: WolfBossDefeated
   m_EditorClassIdentifier: 
   id: WolfBossDefeated
-  initialValue: 1
+  initialValue: 0
