@@ -67,6 +67,7 @@ public class GameMaster : MonoBehaviour
     {
         IntiateGameVariables();
         PowerManager.Instance.RemoveAllPowers();
+        Player.HandlePowerChange(null);
     }
 
     public void ResetPlayBars()

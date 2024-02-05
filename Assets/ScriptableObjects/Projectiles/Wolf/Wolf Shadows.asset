@@ -16,7 +16,7 @@ MonoBehaviour:
     damage: 1
     damageType: 0
     force: {x: 0, y: 0, z: 0}
-  duration: 5
+  duration: 3
   inmobileTime: 0.8
   spawnSound:
     audioClip: {fileID: 8300000, guid: 52bdee5b0808d5943b49a5342a763675, type: 3}

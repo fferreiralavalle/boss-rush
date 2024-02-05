@@ -37,7 +37,7 @@ public class UIPlayerInfo : MonoBehaviour
 
     public void Hide()
     {
-        anim.CloseDialog();
+        anim.CloseDialog(true);
     }
 
     public void UpdateMaxHearts()

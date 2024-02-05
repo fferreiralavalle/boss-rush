@@ -85,7 +85,7 @@ public class Player : Entity
 
     public void HandlePowerChange(Power change)
     {
-        health.maxHealth = baseHealth - PowerManager.Instance.GetPowersTotalHealthCost();
+        health.maxHealth = Mathf.Max(1, baseHealth - PowerManager.Instance.GetPowersTotalHealthCost());
         UIPlayerInfo.Instance.UpdateMaxHearts();
     }
 

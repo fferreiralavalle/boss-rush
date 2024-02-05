@@ -67,13 +67,13 @@ public class EnemyWolf : Enemy
     public override void InitiateStates()
     {
         base.InitiateStates();
-        chargeState = new EChargeAtPointState(this, wantedDistance, new DamageTouch(chargeDamage, chargeCollider));
         idleState = new EIdleState(this, timeBetweenAttacks);
         // Howl
         howlState = new EBlastAreaState(this, howlWavePrefab);
         moveToHowlPositionState = new EMoveToPosition(this, howlPositions[0].position);
         prepareHowl = new EIdleState(this, howlWarningTime);
         prepareHowl.AnimatorEventName = "Prepare";
+        howlState.AnimatorEventName = "Howl";
 
         moveToHowlPositionState.onFinish += PrepareHowl;
         prepareHowl.onFinish += HowlAttack;
@@ -84,14 +84,16 @@ public class EnemyWolf : Enemy
         shadowAttackState = new EFireProjectilesAtPosition(this, shadowWolfPrefab, shadowsAmount, shadowSpawnPositions[0].position, timeBetweenShadows);
         shadowAttackState.rotateToLookAtTarget = false;
         shadowAttackState.targetDistance = 0;
+        shadowAttackState.AnimatorEventName = "Howl";
 
         moveToShadowAttackState.onFinish += FirstShadowAttack;
         shadowAttackState.onFinish += HandleShadowAttackEnd;
 
         // Charge State
+        chargeState = new EChargeAtPointState(this, wantedDistance, new DamageTouch(chargeDamage, chargeCollider));
         prepareToChargeState = new EIdleState(this, prepareTime);
         prepareToChargeState.onFinish += ChargeTarget;
-        prepareToChargeState.AnimatorEventName = "Prepare";
+        prepareToChargeState.AnimatorEventName = "PrepareCharge";
 
         chargeState.damageTouch = new DamageTouch(chargeDamage, chargeCollider);
         chargeState.onReachTarget += (Vector3 oldTarget) => HandleChargeReach();
@@ -103,6 +105,7 @@ public class EnemyWolf : Enemy
         specialAttackState = new EFireProjectilesAtPosition(this, shadowWolfPrefab, 1, shadowSpawnPositions[0].position, timeBetweenSpecialWaves);
         specialAttackState.rotateToLookAtTarget = false;
         specialAttackState.targetDistance = 0;
+        specialAttackState.AnimatorEventName = "Howl";
 
         moveToSpecialAttackPosition.onFinish += FireSpecialAttack;
         specialAttackState.onFinish += HandleSpecialAttackWaveEnd;

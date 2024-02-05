@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113b6616cfe896e44ae8284054ef2f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: It was a gift? Alright then, you can keep it... <wave=0.25>For now...</wave>
+  text: It was a gift? Alright then, you can keep it... <wave a=0.25>For now...</wave>
   speaker: {fileID: 3830384310943169080}
 --- !u!1 &5799480147912590579
 GameObject:
@@ -433,6 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2536885889161337663}
   - component: {fileID: 7089190479474932207}
+  - component: {fileID: 7819715853691286391}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -507,6 +508,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7819715853691286391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799480147912590579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea54b4ee0e045d64c8a6e72bf4d6cc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateOnStartOnly: 1
+  yOffset: -0.8
 --- !u!1 &6599341954510811547
 GameObject:
   m_ObjectHideFlags: 0

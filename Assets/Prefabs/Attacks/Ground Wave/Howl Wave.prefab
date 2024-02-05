@@ -174,6 +174,6 @@ MonoBehaviour:
   onDestroySpawn: {fileID: 0}
   onHitSpawn: {fileID: 0}
   damageMultiplier: 1
-  maxRadius: 5
-  speed: 2.5
+  maxRadius: 4
+  speed: 3.5
   startWidth: 1

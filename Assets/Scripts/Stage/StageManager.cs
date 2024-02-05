@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class StageManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class StageManager : MonoBehaviour
     public Stage initialStage;
     public StageInfo baseStage;
     public UITransition formBlackTransition;
+    public VolumeProfile defaultCameraProfile;
 
     protected Stage currentStage;
     protected Coroutine changeStageRoutine;
@@ -25,6 +27,7 @@ public class StageManager : MonoBehaviour
 
     public void GoToBaseStageFromBlack()
     {
+        Camera.main.GetComponent<Volume>().profile = defaultCameraProfile;
         ChangeStage(baseStage.stage, formBlackTransition);
     }
 
