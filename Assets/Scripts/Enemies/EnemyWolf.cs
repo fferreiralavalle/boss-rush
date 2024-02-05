@@ -23,6 +23,7 @@ public class EnemyWolf : Enemy
 
     [Header("Howl Attack")]
     public Projectile howlWavePrefab;
+    public GameObject warningHowl;
     public List<Transform> howlPositions = new List<Transform>();
     public float howlWarningTime = 0.5f;
     public int howlWaves = 3;
@@ -222,6 +223,7 @@ public class EnemyWolf : Enemy
     public void PrepareHowl()
     {
         AudioMaster.Instance.PlaySoundEffect(howlSound);
+        Instantiate(warningHowl, transform);
         stateMachine.ChangeState(prepareHowl);
     }
 

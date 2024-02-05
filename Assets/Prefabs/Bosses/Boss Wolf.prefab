@@ -156,6 +156,7 @@ MonoBehaviour:
   timeBetweenShadows: 0.25
   shadowSpawnPositions: []
   howlWavePrefab: {fileID: 827418466799592345, guid: e56b860df985e9a4ca3c4c82070f1427, type: 3}
+  warningHowl: {fileID: 3297382265017557132, guid: 3b65bb2df29f25a49a26b3297ec0f2ab, type: 3}
   howlPositions: []
   howlWarningTime: 1
   howlWaves: 2
